@@ -3,7 +3,18 @@
 
 <xs:element name="doc" type="docType"/>
 
-<xs:group name="nodeGroup">
+<xs:group name="nodeContentGroup">
+  <xs:choice>
+    <xs:element name = "transition" type="transitionType"/>
+    <xs:element name="node" type="nodeType"/>
+    <xs:element name="text" type="textType"/>
+    <xs:element name="txt" type="textType"/>
+    <xs:element name="img" type="imageType"/>
+    <xs:element name="image" type="imageType"/>
+  </xs:choice>
+</xs:group>
+
+<xs:group name="treeContentGroup">
   <xs:choice>
     <xs:element name="node" type="nodeType"/>
     <xs:element name="text" type="textType"/>
@@ -38,7 +49,7 @@
 
 <xs:complexType name="treeType">
   <xs:sequence minOccurs="1" maxOccurs="1">      
-    <xs:group ref="nodeGroup"/>
+    <xs:group ref="treeContentGroup"/>
   </xs:sequence>
   <xs:attribute name="name" type="xs:string" use="required"/>
   <xs:attribute name="anchor" type="xs:string"/>
@@ -46,14 +57,14 @@
 
 <xs:complexType name="nodeType">
   <xs:sequence minOccurs="0" maxOccurs="unbounded">      
-    <xs:group ref="nodeGroup"/>
+    <xs:group ref="nodeContentGroup"/>
   </xs:sequence>
   <xs:attributeGroup ref="commonNodeAttrGrp"/>
 </xs:complexType>
 
 <xs:complexType name="textType">
   <xs:sequence minOccurs="0" maxOccurs="unbounded">         
-    <xs:group ref="nodeGroup"/>    
+    <xs:group ref="nodeContentGroup"/>    
   </xs:sequence>
   <xs:attribute name="content" type="xs:string" use="required"/>
   <xs:attributeGroup ref="commonNodeAttrGrp"/>
@@ -64,7 +75,7 @@
 
 <xs:complexType name="imageType">
   <xs:sequence minOccurs="0" maxOccurs="unbounded">      
-    <xs:group ref="nodeGroup"/>
+    <xs:group ref="nodeContentGroup"/>
   </xs:sequence>
   <xs:attributeGroup ref="commonNodeAttrGrp"/>
   <xs:attribute name="content" type="xs:string" use="required"/>
@@ -171,4 +182,62 @@
   </xs:restriction>
 </xs:simpleType>
 
+<xs:complexType name="transitionType">
+  <xs:attribute name="property" use="required">
+    <xs:simpleType>
+      <xs:restriction base="xs:string">
+        <xs:enumeration value = "size"/>
+        <xs:enumeration value = "width"/>
+        <xs:enumeration value = "height"/>
+        <xs:enumeration value = "min-size"/>
+        <xs:enumeration value = "min-width"/>
+        <xs:enumeration value = "min-heigth"/>
+        <xs:enumeration value = "max-size"/>
+        <xs:enumeration value = "max-width"/>
+        <xs:enumeration value = "max-height"/>
+        <xs:enumeration value = "position"/>
+        <xs:enumeration value = "position3D"/>
+        <xs:enumeration value = "x"/>
+        <xs:enumeration value = "y"/>
+        <xs:enumeration value = "z"/>
+        <xs:enumeration value = "grow"/>
+        <xs:enumeration value = "shrink"/>
+        <xs:enumeration value = "padding"/>
+        <xs:enumeration value = "padding-left"/>
+        <xs:enumeration value = "padding-top"/>
+        <xs:enumeration value = "padding-right"/>
+        <xs:enumeration value = "padding-bottom"/>
+        <xs:enumeration value = "margin"/>
+        <xs:enumeration value = "margin-left"/>
+        <xs:enumeration value = "margin-top"/>
+        <xs:enumeration value = "margin-right"/>
+        <xs:enumeration value = "margin-bottom"/>        
+        <xs:enumeration value = "pivot"/>
+        <xs:enumeration value = "color"/>
+        <xs:enumeration value = "background-color"/>
+        <xs:enumeration value = "background-opacity"/>
+        <xs:enumeration value = "background-left"/>
+        <xs:enumeration value = "background-top"/>
+        <xs:enumeration value = "background-right"/>
+        <xs:enumeration value = "background-bottom"/>
+        <xs:enumeration value = "background-offset"/>
+        <xs:enumeration value = "backgroundZ"/>
+        <xs:enumeration value = "borderThickness"/>
+        <xs:enumeration value = "borderColor"/>
+      </xs:restriction>
+    </xs:simpleType>
+  </xs:attribute>
+  <xs:attribute name="interpolation">
+    <xs:simpleType>
+      <xs:restriction base="xs:string">
+        <xs:enumeration value="linear"/>
+        <xs:enumeration value="ease-in"/>
+        <xs:enumeration value="ease-out"/>
+        <xs:enumeration value="ease-in-out"/>
+        <xs:enumeration value="custom"/>
+      </xs:restriction>
+    </xs:simpleType>
+  </xs:attribute>
+  <xs:attribute name="curve" type="xs:string"/>
+</xs:complexType>
 </xs:schema>
