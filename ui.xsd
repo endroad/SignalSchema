@@ -5,7 +5,7 @@
 
 <xs:group name="nodeContentGroup">
   <xs:choice>
-    <xs:element name = "transition" type="transitionType"/>
+    <xs:element name ="transition" type="transitionType"/>
     <xs:element name="node" type="nodeType"/>
     <xs:element name="text" type="textType"/>
     <xs:element name="txt" type="textType"/>
@@ -182,7 +182,7 @@
   </xs:restriction>
 </xs:simpleType>
 
-<xs:complexType name="transitionType">
+<xs:complexType name="transitionType">  
   <xs:attribute name="property" use="required">
     <xs:simpleType>
       <xs:restriction base="xs:string">
@@ -227,6 +227,7 @@
       </xs:restriction>
     </xs:simpleType>
   </xs:attribute>
+  <xs:attribute name="duration" type="xs:decimal" use="required"/>
   <xs:attribute name="interpolation">
     <xs:simpleType>
       <xs:restriction base="xs:string">
