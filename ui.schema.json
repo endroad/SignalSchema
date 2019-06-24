@@ -8,7 +8,8 @@
         {
           "duration": { "type": "number" },
           "interpolation" : { "type" : "string", "enum" : ["linear","ease-in","ease-out","ease-in-out","custom"] },
-          "curve": { "type": "string" }
+          "curve": { "type": "string" },
+          "scope" : { "type" : "string", "enum" : ["permanent", "state-only"] }
         },
         "required": ["duration"]
       },
