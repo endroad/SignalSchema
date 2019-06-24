@@ -1,4 +1,66 @@
-{
+{   
+    "definitions": 
+    {
+      "transitionValue": 
+      {
+        "type": "object",
+        "properties": 
+        {
+          "duration": { "type": "number" },
+          "curve": { "type": "string" }
+        },
+        "required": ["duration"]
+      },
+      "colorValue":
+      {
+        "type" : "string", 
+        "pattern": "#([a-fA-F0-9]{8}|[a-fA-F0-9]{6})$"
+      },
+      "vec2":
+      {
+        "type":"array", 
+        "items": {
+          "type": "number"
+        },
+        "maxItems": 2,
+        "minItems": 2
+      },
+      "vec3":
+      {
+        "type":"array", 
+        "items": {
+          "type": "number"
+        },
+        "maxItems": 3,
+        "minItems": 3
+      },
+      "vec4":
+      {
+        "type":"array", 
+        "items": {
+          "type": "number"
+        },
+        "maxItems": 4,
+        "minItems": 4
+      },
+      "extent":
+      {
+        "type":"object",
+        "properties": 
+        {
+          "l" : {"type":"number"},
+          "t" : {"type":"number"},
+          "r" : {"type":"number"},
+          "b" : {"type":"number"},
+
+          "left" : {"type":"number"},
+          "top" : {"type":"number"},
+          "right" : {"type":"number"},
+          "bottom" : {"type":"number"}
+        },
+        "additionalProperties": false
+      }
+    },
     "type" : "object",
     "patternProperties":
     {
@@ -7,129 +69,98 @@
         "type" : "object",
         "properties":
         {
-            "color" : 
+            "transition" :
             {
-              "type" : "string",
-              "pattern": "#([a-fA-F0-9]{8}|[a-fA-F0-9]{6})$"
-            },
-            "axis" : { "type" : "string", "enum" : ["horizontal", "vertical"]},
+              "type" : "object",
+              "properties":
+              {
+                "color" :             { "$ref": "#/definitions/transitionValue" },
+                "width" :             { "$ref": "#/definitions/transitionValue" },
+                "height" :            { "$ref": "#/definitions/transitionValue" },
+                "size" :              { "$ref": "#/definitions/transitionValue" },                
+                "min-width" :         { "$ref": "#/definitions/transitionValue" },
+                "min-height" :        { "$ref": "#/definitions/transitionValue" },
+                "min-size" :          { "$ref": "#/definitions/transitionValue" },
+                "max-width" :         { "$ref": "#/definitions/transitionValue" },
+                "max-height" :        { "$ref": "#/definitions/transitionValue" },
+                "max-size" :          { "$ref": "#/definitions/transitionValue" },
+                "position" :          { "$ref": "#/definitions/transitionValue" },
+                "position3D" :        { "$ref": "#/definitions/transitionValue" },
+                "x" :                 { "$ref": "#/definitions/transitionValue" },
+                "y" :                 { "$ref": "#/definitions/transitionValue" },
+                "z" :                 { "$ref": "#/definitions/transitionValue" },
+                "grow" :              { "$ref": "#/definitions/transitionValue" },
+                "shrink" :            { "$ref": "#/definitions/transitionValue" },
+                "padding" :           { "$ref": "#/definitions/transitionValue" },
+                "padding-left" :      { "$ref": "#/definitions/transitionValue" },
+                "padding-top" :       { "$ref": "#/definitions/transitionValue" },
+                "padding-right" :     { "$ref": "#/definitions/transitionValue" },
+                "padding-bottom" :    { "$ref": "#/definitions/transitionValue" },
+                "margin" :            { "$ref": "#/definitions/transitionValue" },
+                "margin-left" :       { "$ref": "#/definitions/transitionValue" },
+                "margin-top" :        { "$ref": "#/definitions/transitionValue" },
+                "margin-right" :      { "$ref": "#/definitions/transitionValue" },
+                "margin-bottom" :     { "$ref": "#/definitions/transitionValue" },
+                "background-color" :  { "$ref": "#/definitions/transitionValue" },                
+                "backgroud-opacity" : { "$ref": "#/definitions/transitionValue" },
+                "background-left" :   { "$ref": "#/definitions/transitionValue" },
+                "background-top" :    { "$ref": "#/definitions/transitionValue" },
+                "background-right" :  { "$ref": "#/definitions/transitionValue" },
+                "background-bottom" : { "$ref": "#/definitions/transitionValue" },
+                "background-offset" : { "$ref": "#/definitions/transitionValue" },
+                "background-z" :      { "$ref": "#/definitions/transitionValue" },
+                "border-thickness" :  { "$ref": "#/definitions/transitionValue" },
+                "border-color" :      { "$ref": "#/definitions/transitionValue" }
+              },
+              "additionalProperties": false
+            },   
+                   
+            "size" : { "$ref": "#/definitions/vec2" },
             "width" : { "type":"number" },
             "height" : { "type":"number" },
-            "size" : 
-            { 
-              "type":"array", 
-              "items": {
-                "type": "number"
-              },
-              "maxItems": 2,
-              "minItems": 2
-            },
+            "min-size" : { "$ref": "#/definitions/vec2" },
             "min-width" : { "type":"number" },
             "min-height" : { "type":"number" },
-            "min-size" : { 
-              "type":"array", 
-              "items": {
-                "type": "number"
-              },
-              "maxItems": 2,
-              "minItems": 2
-            },
+            "max-size" : { "$ref": "#/definitions/vec2" },
             "max-width" : { "type":"number" },
             "max-height" : { "type":"number" },
-            "max-size" : { 
-              "type":"array", 
-              "items": {
-                "type": "number"
-              },
-              "maxItems": 2,
-              "minItems": 2
-            },
-            "position" : { 
-              "type":"array", 
-              "items": {
-                "type": "number"
-              },
-              "maxItems": 2,
-              "minItems": 2
-            },
-            "position3D" : { 
-              "type":"array", 
-              "items": {
-                "type": "number"
-              },
-              "maxItems": 3,
-              "minItems": 3
-            },
+            "position" : { "$ref": "#/definitions/vec2" },
+            "position3D" : { "$ref": "#/definitions/vec3" },
             "x" : { "type":"number" },
             "y" : { "type":"number" },
             "z" : { "type":"number" },
             "grow" : { "type":"number" },
             "shrink" : { "type":"number" },
-            "padding" : 
-            { 
-              "type":"object",
-              "properties": 
-              {
-                "l" : {"type":"number"},
-                "t" : {"type":"number"},
-                "r" : {"type":"number"},
-                "b" : {"type":"number"},
-
-                "left" : {"type":"number"},
-                "top" : {"type":"number"},
-                "right" : {"type":"number"},
-                "bottom" : {"type":"number"}
-              },
-              "additionalProperties": false
-            },
-            "paddingLeft" : { "type":"number" },
-            "paddingTop" : { "type":"number" },
-            "paddingRight" : { "type":"number" },
-            "paddingBottom" : { "type":"number" },
-            "margin" : 
-            { 
-              "type":"object",
-              "properties": 
-              {
-                "l" : {"type":"number"},
-                "t" : {"type":"number"},
-                "r" : {"type":"number"},
-                "b" : {"type":"number"},
-
-                "left" : {"type":"number"},
-                "top" : {"type":"number"},
-                "right" : {"type":"number"},
-                "bottom" : {"type":"number"}
-              },
-              "additionalProperties": false
-            },
-            "marginLeft" : { "type":"number" },
-            "marginTop" : { "type":"number" },
-            "marginRight" : { "type":"number" },
-            "marginBottom" : { "type":"number" },
+            "padding" : { "$ref": "#/definitions/extent" },
+            "padding-left" : { "type":"number" },
+            "padding-top" : { "type":"number" },
+            "padding-right" : { "type":"number" },
+            "padding-bottom" : { "type":"number" },
+            "margin" :{ "$ref": "#/definitions/extent" },
+            "margin-left" : { "type":"number" },
+            "margin-top" : { "type":"number" },
+            "margin-right" : { "type":"number" },
+            "margin-bottom" : { "type":"number" },            
+            "axis" : { "type" : "string", "enum" : ["horizontal", "vertical"]},
             "wrap" : { "type":"boolean" },
             "justify" : { "type" : "string", "enum" : ["start","center","end","space between","space around","space evenly"] },
             "align" : { "type" : "string", "enum" : ["start", "center", "end", "baseline" ] },
-            "background-color" : { "type" : "string", "pattern": "#([a-fA-F0-9]{8}|[a-fA-F0-9]{6})$" },
+            "pivot" : { "$ref": "#/definitions/vec2" },
+            "color" : { "$ref": "#/definitions/colorValue" },
+            "font" : { "type" : "string" },
+            "textSize" : { "type" : "integer" },
+            "background-color" : { "$ref": "#/definitions/colorValue" },
             "background-image" : { "type" : "string" },
             "backgroud-opacity" : { "type" : "number" },
             "background-left" : { "type" : "number" },
             "background-top" : { "type" : "number" },
             "background-right" : { "type" : "number" },
             "background-bottom" : { "type" : "number" },
-            "background-offset" :
-            { 
-              "type":"array", 
-              "items": {
-                "type": "number"
-              },
-              "maxItems": 2,
-              "minItems": 2
-            },
+            "background-offset" : { "$ref": "#/definitions/vec2" },
             "background-z" : { "type" : "number" },
             "selectable" : { "type" : "boolean" },
             "border-thickness" : { "type" : "number" },
-            "border-color" : { "type" : "string", "pattern": "#([a-fA-F0-9]{8}|[a-fA-F0-9]{6})$" }
+            "border-color" : { "$ref": "#/definitions/colorValue" }
         },
         "additionalProperties": false
       }                   
