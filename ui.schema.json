@@ -70,7 +70,7 @@
         "type" : "object",
         "properties":
         {
-            "transition" :
+            "transitions" :
             {
               "type" : "object",
               "properties":
