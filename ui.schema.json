@@ -1,0 +1,138 @@
+{
+    "type" : "object",
+    "patternProperties":
+    {
+      "^\\s*((\\.|#)?[a-zA-Z0-9_\\-]+\\s*)+\\s*(:\\s*(focus|hidden|normal|selected|disabled))?\\s*$":
+      {
+        "type" : "object",
+        "properties":
+        {
+            "color" : 
+            {
+              "type" : "string",
+              "pattern": "#([a-fA-F0-9]{8}|[a-fA-F0-9]{6})$"
+            },
+            "axis" : { "type" : "string", "enum" : ["horizontal", "vertical"]},
+            "width" : { "type":"number" },
+            "height" : { "type":"number" },
+            "size" : 
+            { 
+              "type":"array", 
+              "items": {
+                "type": "number"
+              },
+              "maxItems": 2,
+              "minItems": 2
+            },
+            "min-width" : { "type":"number" },
+            "min-height" : { "type":"number" },
+            "min-size" : { 
+              "type":"array", 
+              "items": {
+                "type": "number"
+              },
+              "maxItems": 2,
+              "minItems": 2
+            },
+            "max-width" : { "type":"number" },
+            "max-height" : { "type":"number" },
+            "max-size" : { 
+              "type":"array", 
+              "items": {
+                "type": "number"
+              },
+              "maxItems": 2,
+              "minItems": 2
+            },
+            "position" : { 
+              "type":"array", 
+              "items": {
+                "type": "number"
+              },
+              "maxItems": 2,
+              "minItems": 2
+            },
+            "position3D" : { 
+              "type":"array", 
+              "items": {
+                "type": "number"
+              },
+              "maxItems": 3,
+              "minItems": 3
+            },
+            "x" : { "type":"number" },
+            "y" : { "type":"number" },
+            "z" : { "type":"number" },
+            "grow" : { "type":"number" },
+            "shrink" : { "type":"number" },
+            "padding" : 
+            { 
+              "type":"object",
+              "properties": 
+              {
+                "l" : {"type":"number"},
+                "t" : {"type":"number"},
+                "r" : {"type":"number"},
+                "b" : {"type":"number"},
+
+                "left" : {"type":"number"},
+                "top" : {"type":"number"},
+                "right" : {"type":"number"},
+                "bottom" : {"type":"number"}
+              },
+              "additionalProperties": false
+            },
+            "paddingLeft" : { "type":"number" },
+            "paddingTop" : { "type":"number" },
+            "paddingRight" : { "type":"number" },
+            "paddingBottom" : { "type":"number" },
+            "margin" : 
+            { 
+              "type":"object",
+              "properties": 
+              {
+                "l" : {"type":"number"},
+                "t" : {"type":"number"},
+                "r" : {"type":"number"},
+                "b" : {"type":"number"},
+
+                "left" : {"type":"number"},
+                "top" : {"type":"number"},
+                "right" : {"type":"number"},
+                "bottom" : {"type":"number"}
+              },
+              "additionalProperties": false
+            },
+            "marginLeft" : { "type":"number" },
+            "marginTop" : { "type":"number" },
+            "marginRight" : { "type":"number" },
+            "marginBottom" : { "type":"number" },
+            "wrap" : { "type":"boolean" },
+            "justify" : { "type" : "string", "enum" : ["start","center","end","space between","space around","space evenly"] },
+            "align" : { "type" : "string", "enum" : ["start", "center", "end", "baseline" ] },
+            "background-color" : { "type" : "string", "pattern": "#([a-fA-F0-9]{8}|[a-fA-F0-9]{6})$" },
+            "background-image" : { "type" : "string" },
+            "backgroud-opacity" : { "type" : "number" },
+            "background-left" : { "type" : "number" },
+            "background-top" : { "type" : "number" },
+            "background-right" : { "type" : "number" },
+            "background-bottom" : { "type" : "number" },
+            "background-offset" :
+            { 
+              "type":"array", 
+              "items": {
+                "type": "number"
+              },
+              "maxItems": 2,
+              "minItems": 2
+            },
+            "background-z" : { "type" : "number" },
+            "selectable" : { "type" : "boolean" },
+            "border-thickness" : { "type" : "number" },
+            "border-color" : { "type" : "string", "pattern": "#([a-fA-F0-9]{8}|[a-fA-F0-9]{6})$" }
+        },
+        "additionalProperties": false
+      }                   
+    },  
+    "additionalProperties": false
+}

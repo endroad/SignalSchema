@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+<xs:element name="doc" type="docType"/>
+
+<xs:group name="nodeGroup">
+  <xs:choice>
+    <xs:element name="node" type="nodeType"/>
+    <xs:element name="text" type="textType"/>
+    <xs:element name="txt" type="textType"/>
+    <xs:element name="img" type="imageType"/>
+    <xs:element name="image" type="imageType"/>
+  </xs:choice>
+</xs:group>
+
+<xs:group name="docContentGroup">
+  <xs:choice>
+      <xs:element name="tree" type="treeType"/>
+      <xs:element name="style" type="styleSheetType"/>
+  </xs:choice>
+</xs:group>
+
+<xs:complexType name="docType">
+  <xs:sequence minOccurs="0" maxOccurs="unbounded">      
+   <xs:group ref="docContentGroup"/>
+  </xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="styleSheetType">  
+  <xs:attribute name="file">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+            <xs:pattern value=".*\.sss"/>
+        </xs:restriction>
+      </xs:simpleType>
+  </xs:attribute>
+</xs:complexType>
+
+<xs:complexType name="treeType">
+  <xs:sequence minOccurs="1" maxOccurs="1">      
+    <xs:group ref="nodeGroup"/>
+  </xs:sequence>
+  <xs:attribute name="name" type="xs:string" use="required"/>
+  <xs:attribute name="anchor" type="xs:string"/>
+</xs:complexType>
+
+<xs:complexType name="nodeType">
+  <xs:sequence minOccurs="0" maxOccurs="unbounded">      
+    <xs:group ref="nodeGroup"/>
+  </xs:sequence>
+  <xs:attributeGroup ref="commonNodeAttrGrp"/>
+</xs:complexType>
+
+<xs:complexType name="textType">
+  <xs:sequence minOccurs="0" maxOccurs="unbounded">         
+    <xs:group ref="nodeGroup"/>    
+  </xs:sequence>
+  <xs:attribute name="content" type="xs:string" use="required"/>
+  <xs:attributeGroup ref="commonNodeAttrGrp"/>
+  <xs:attribute name="font" type="xs:string"/>
+  <xs:attribute name="text-size" type="xs:positiveInteger"/>
+  <xs:attribute name="translate" type="xs:boolean"/>
+</xs:complexType>
+
+<xs:complexType name="imageType">
+  <xs:sequence minOccurs="0" maxOccurs="unbounded">      
+    <xs:group ref="nodeGroup"/>
+  </xs:sequence>
+  <xs:attributeGroup ref="commonNodeAttrGrp"/>
+  <xs:attribute name="content" type="xs:string" use="required"/>
+</xs:complexType>
+
+<xs:attributeGroup name="commonNodeAttrGrp">
+  <xs:attribute name="class" type="xs:string"/>
+  <xs:attribute name="id" type="xs:string"/>
+  <xs:attribute name="width" type="xs:decimal"/>
+  <xs:attribute name="height" type="xs:decimal"/>
+  <xs:attribute name="size" type="float2Type"/>
+  <xs:attribute name="min-width" type="xs:decimal"/>
+  <xs:attribute name="min-height" type="xs:decimal"/>
+  <xs:attribute name="min-size" type="float2Type"/>
+  <xs:attribute name="max-width" type="xs:decimal"/>
+  <xs:attribute name="max-height" type="xs:decimal"/>
+  <xs:attribute name="max-size" type="float2Type"/>
+  <xs:attribute name="position" type="float2Type"/>
+  <xs:attribute name="position3D" type="float3Type"/>
+  <xs:attribute name="x" type="xs:decimal"/>
+  <xs:attribute name="y" type="xs:decimal"/>
+  <xs:attribute name="z" type="xs:decimal"/>
+  <xs:attribute name="grow" type="xs:decimal"/>
+  <xs:attribute name="shrink" type="xs:decimal"/>
+  <xs:attribute name="padding" type="extentType"/>
+  <xs:attribute name="padding-left" type="xs:decimal"/>
+  <xs:attribute name="padding-top" type="xs:decimal"/>
+  <xs:attribute name="padding-right" type="xs:decimal"/>
+  <xs:attribute name="padding-bottom" type="xs:decimal"/>
+  <xs:attribute name="margin" type="extentType"/>
+  <xs:attribute name="margin-left" type="xs:decimal"/>
+  <xs:attribute name="margin-top" type="xs:decimal"/>
+  <xs:attribute name="margin-right" type="xs:decimal"/>
+  <xs:attribute name="margin-bottom" type="xs:decimal"/>
+  <xs:attribute name="wrap" type="xs:boolean"/>
+  <xs:attribute name="justify" type="justifyType"/>
+  <xs:attribute name="align" type="alignType"/>
+  <!--<xs:attribute name="alignWraps" type="xs:string"/>-->
+  <xs:attribute name="pivot" type="float2Type"/>
+  <xs:attribute name="color" type="colorType"/>
+  <xs:attribute name="axis">
+    <xs:simpleType>
+      <xs:restriction base="xs:string">
+        <xs:enumeration value="horizontal"/>
+        <xs:enumeration value="vertical"/>
+      </xs:restriction>
+    </xs:simpleType>
+  </xs:attribute>
+  <xs:attribute name="background-color" type="colorType" />
+  <xs:attribute name="background-image" type="xs:string" />
+  <xs:attribute name="backgroud-opacity" type="xs:decimal" />
+  <xs:attribute name="background-left" type="xs:decimal" />
+  <xs:attribute name="background-top" type="xs:decimal" />
+  <xs:attribute name="background-right" type="xs:decimal" />
+  <xs:attribute name="background-bottom" type="xs:decimal" />
+  <xs:attribute name="background-offset" type="float2Type" />
+  <xs:attribute name="background-z" type="xs:decimal" />
+  <xs:attribute name="selectable" type="xs:boolean" />
+  <xs:attribute name="border-thickness" type="xs:decimal" />
+  <xs:attribute name="border-color" type="colorType" />
+</xs:attributeGroup>
+
+<xs:simpleType name="float2Type">
+  <xs:restriction base="xs:string">
+    <xs:pattern value="\s*[0-9\+-\.]+\s*,\s*[0-9\+-\.]+\s*"/>
+  </xs:restriction>
+</xs:simpleType>
+
+<xs:simpleType name="float3Type">
+  <xs:restriction base="xs:string">
+    <xs:pattern value="\s*[0-9\+-\.]+\s*,\s*[0-9\+-\.]+\s*,\s*[0-9\+-\.]+\s*"/>
+  </xs:restriction>
+</xs:simpleType>
+
+<xs:simpleType name="extentType">
+  <xs:restriction base="xs:string">
+    <xs:pattern value="(\s*(left|right|top|bottom|l|r|t|b)\s*:\s*[0-9\.\-+]+\s*){1,4}"/>
+  </xs:restriction>
+</xs:simpleType>
+
+<xs:simpleType name="colorType">
+  <xs:restriction base="xs:string">
+    <xs:pattern value="#([a-fA-F0-9]{8}|[a-fA-F0-9]{6})"/>
+  </xs:restriction>
+</xs:simpleType>
+
+<xs:simpleType name="alignType">
+  <xs:restriction base="xs:string">
+    <xs:enumeration value="start"/>
+    <xs:enumeration value="center"/>
+    <xs:enumeration value="end"/>
+    <xs:enumeration value="baseline"/>
+  </xs:restriction>
+</xs:simpleType>
+
+<xs:simpleType name="justifyType">
+  <xs:restriction base="xs:string">
+    <xs:enumeration value="start"/>
+    <xs:enumeration value="center"/>
+    <xs:enumeration value="end"/>
+    <xs:enumeration value="space around"/>
+    <xs:enumeration value="space between"/>
+    <xs:enumeration value="space evenly"/>
+  </xs:restriction>
+</xs:simpleType>
+
+</xs:schema>
