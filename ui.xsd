@@ -149,7 +149,7 @@
   <xs:attribute name="selectable" type="xs:boolean" />
   <xs:attribute name="border-thickness" type="xs:decimal" />
   <xs:attribute name="border-color" type="colorType" />
-  <xs:attribute name="btn" type="keyType" />
+  <xs:attribute name="btn-key" type="keyType" />
 </xs:attributeGroup>
 
 <xs:simpleType name="float2Type">
