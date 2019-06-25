@@ -11,6 +11,8 @@
     <xs:element name="txt" type="textType"/>
     <xs:element name="img" type="imageType"/>
     <xs:element name="image" type="imageType"/>
+    <xs:element name="btn" type="buttonType"/>
+    <xs:element name="button" type="buttonType"/>
   </xs:choice>
 </xs:group>
 
@@ -21,6 +23,8 @@
     <xs:element name="txt" type="textType"/>
     <xs:element name="img" type="imageType"/>
     <xs:element name="image" type="imageType"/>
+    <xs:element name="btn" type="buttonType"/>
+    <xs:element name="button" type="buttonType"/>
   </xs:choice>
 </xs:group>
 
@@ -81,6 +85,15 @@
   <xs:attribute name="content" type="xs:string" use="required"/>
 </xs:complexType>
 
+<xs:complexType name="buttonType">
+  <xs:sequence minOccurs="0" maxOccurs="unbounded">      
+    <xs:group ref="nodeContentGroup"/>
+  </xs:sequence>
+  <xs:attributeGroup ref="commonNodeAttrGrp"/>
+  <xs:attribute name="content" type="xs:string" use="required"/>
+  <xs:attribute name="key" type="keyType" use="required"/>
+</xs:complexType>
+
 <xs:attributeGroup name="commonNodeAttrGrp">
   <xs:attribute name="class" type="xs:string"/>
   <xs:attribute name="id" type="xs:string"/>
@@ -136,6 +149,7 @@
   <xs:attribute name="selectable" type="xs:boolean" />
   <xs:attribute name="border-thickness" type="xs:decimal" />
   <xs:attribute name="border-color" type="colorType" />
+  <xs:attribute name="btn" type="keyType" />
 </xs:attributeGroup>
 
 <xs:simpleType name="float2Type">
@@ -168,6 +182,28 @@
     <xs:enumeration value="center"/>
     <xs:enumeration value="end"/>
     <xs:enumeration value="baseline"/>
+  </xs:restriction>
+</xs:simpleType>
+
+<xs:simpleType name="keyType">
+  <xs:restriction base="xs:string">
+    <xs:enumeration value = "validate"/>
+    <xs:enumeration value = "do"/>
+    <xs:enumeration value = "back"/>
+    <xs:enumeration value = "alt"/>
+    <xs:enumeration value = "previous"/>
+    <xs:enumeration value = "next"/>
+    <xs:enumeration value = "down"/>
+    <xs:enumeration value = "up"/>
+    <xs:enumeration value = "left"/>
+    <xs:enumeration value = "right"/>
+    <xs:enumeration value = "start"/>
+    <xs:enumeration value = "esc"/>
+    <xs:enumeration value = "aux0"/>
+    <xs:enumeration value = "aux1"/>
+    <xs:enumeration value = "aux2"/>
+    <xs:enumeration value = "aux3"/>
+    <xs:enumeration value = "interact"/>
   </xs:restriction>
 </xs:simpleType>
 

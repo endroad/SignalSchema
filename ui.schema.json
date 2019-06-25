@@ -61,12 +61,36 @@
           "bottom" : {"type":"number"}
         },
         "additionalProperties": false
+      },
+      "key":
+      {
+        "type" : "string",
+        "enum" : 
+        [
+          "validate", 
+          "do", 
+          "back", 
+          "alt", 
+          "previous", 
+          "next", 
+          "down", 
+          "up", 
+          "left", 
+          "right", 
+          "start", 
+          "esc", 
+          "aux0", 
+          "aux1", 
+          "aux2", 
+          "aux3", 
+          "interact"
+        ] 
       }
     },
     "type" : "object",
     "patternProperties":
     {
-      "^\\s*((\\.|#)?[a-zA-Z0-9_\\-]+\\s*)+\\s*(:\\s*(focus|hidden|normal|selected|disabled))?\\s*$":
+      "^\\s*((\\.|#)?[a-zA-Z0-9_\\-]+\\s*)+\\s*(:\\s*(focus|hidden|normal|selected|disabled|pressed))?\\s*$":
       {
         "type" : "object",
         "properties":
@@ -162,7 +186,8 @@
             "background-z" : { "type" : "number" },
             "selectable" : { "type" : "boolean" },
             "border-thickness" : { "type" : "number" },
-            "border-color" : { "$ref": "#/definitions/colorValue" }
+            "border-color" : { "$ref": "#/definitions/colorValue" },
+            "btn" : { "$ref": "#/definitions/key" }
         },
         "additionalProperties": false
       }                   
