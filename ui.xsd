@@ -70,11 +70,12 @@
   <xs:sequence minOccurs="0" maxOccurs="unbounded">         
     <xs:group ref="nodeContentGroup"/>    
   </xs:sequence>
-  <xs:attribute name="content" type="xs:string" use="required"/>
+  <xs:attribute name="content" type="xs:string"/>
   <xs:attributeGroup ref="commonNodeAttrGrp"/>
   <xs:attribute name="font" type="xs:string"/>
   <xs:attribute name="text-size" type="xs:positiveInteger"/>
   <xs:attribute name="translate" type="xs:boolean"/>
+  <xs:attribute name="btn-txt" type="keyType"/>
 </xs:complexType>
 
 <xs:complexType name="imageType">
@@ -82,7 +83,8 @@
     <xs:group ref="nodeContentGroup"/>
   </xs:sequence>
   <xs:attributeGroup ref="commonNodeAttrGrp"/>
-  <xs:attribute name="content" type="xs:string" use="required"/>
+  <xs:attribute name="content" type="xs:string"/>
+  <xs:attribute name="btn-img" type="keyType"/>
 </xs:complexType>
 
 <xs:complexType name="buttonType">
