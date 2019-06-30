@@ -13,6 +13,7 @@
     <xs:element name="image" type="imageType"/>
     <xs:element name="btn" type="buttonType"/>
     <xs:element name="button" type="buttonType"/>
+    <xs:element name="circle" type="circleType"/>
   </xs:choice>
 </xs:group>
 
@@ -94,6 +95,17 @@
   <xs:attributeGroup ref="commonNodeAttrGrp"/>
   <xs:attribute name="content" type="xs:string" use="required"/>
   <xs:attribute name="key" type="keyType" use="required"/>
+</xs:complexType>
+
+<xs:complexType name="circleType">
+  <xs:sequence minOccurs="0" maxOccurs="unbounded">      
+    <xs:group ref="nodeContentGroup"/>
+  </xs:sequence>
+  <xs:attributeGroup ref="commonNodeAttrGrp"/>
+  <xs:attribute name="min-angle" type="xs:decimal"/>
+  <xs:attribute name="max-angle" type="xs:decimal"/>
+  <xs:attribute name="radius" type="xs:decimal"/>
+  <xs:attribute name="inner-radius" type="xs:decimal"/>
 </xs:complexType>
 
 <xs:attributeGroup name="commonNodeAttrGrp">
@@ -262,6 +274,10 @@
         <xs:enumeration value = "backgroundZ"/>
         <xs:enumeration value = "borderThickness"/>
         <xs:enumeration value = "borderColor"/>
+        <xs:enumeration value = "radius"/>
+        <xs:enumeration value = "inner-radius"/>
+        <xs:enumeration value = "min-angle"/>
+        <xs:enumeration value = "max-angle"/>
       </xs:restriction>
     </xs:simpleType>
   </xs:attribute>

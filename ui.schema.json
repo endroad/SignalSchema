@@ -136,7 +136,11 @@
                 "background-offset" : { "$ref": "#/definitions/transitionValue" },
                 "background-z" :      { "$ref": "#/definitions/transitionValue" },
                 "border-thickness" :  { "$ref": "#/definitions/transitionValue" },
-                "border-color" :      { "$ref": "#/definitions/transitionValue" }
+                "border-color" :      { "$ref": "#/definitions/transitionValue" },
+                "radius":             { "$ref": "#/definitions/transitionValue" },
+                "inner-radius":       { "$ref": "#/definitions/transitionValue" },
+                "min-angle":          { "$ref": "#/definitions/transitionValue" },
+                "max-angle":          { "$ref": "#/definitions/transitionValue" }
               },
               "additionalProperties": false
             },   
@@ -187,7 +191,11 @@
             "selectable" : { "type" : "boolean" },
             "border-thickness" : { "type" : "number" },
             "border-color" : { "$ref": "#/definitions/colorValue" },
-            "btn-key" : { "$ref": "#/definitions/key" }
+            "btn-key" : { "$ref": "#/definitions/key" },
+            "radius": { "type" :"number" },
+            "inner-radius": { "type" :"number" },
+            "min-angle": { "type" :"number" },
+            "max-angle": { "type" :"number" }
         },
         "additionalProperties": false
       }                   
