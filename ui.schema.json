@@ -222,7 +222,22 @@
             "emissive" : { "type" : "number" },
             "background-emissive": { "type" : "number" },
             "border-emissive": { "type" : "number" },
-            "text-justify": { "type" : "string", "enum" : ["start","center","end","space between","space around","space evenly"] },
+            "text-alignment": { "type" : "string", 
+              "enum" : 
+              [
+                "left",
+                "center",
+                "right",
+                "upper-left",
+                "upper-center",
+                "upper-right",
+                "middle-left",
+                "middle-center",
+                "middle-right",
+                "lower-left", 
+                "lower-center",
+                "lower-right"
+              ] },
             "stretch": { "type" : "boolean" }
         },
         "additionalProperties": false

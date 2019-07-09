@@ -167,8 +167,25 @@
   <xs:attribute name="emissive" type="xs:decimal"/>
   <xs:attribute name="background-emissive" type="xs:decimal"/>
   <xs:attribute name="border-emissive" type="xs:decimal"/>
-  <xs:attribute name="text-justify" type="xs:decimal"/>
-  <xs:attribute name="stretch" type="xs:decimal"/>
+  <xs:attribute name="text-aligment">
+    <xs:simpleType>
+      <xs:restriction base="xs:string">
+        <xs:enumeration value="left"/>
+        <xs:enumeration value="center"/>
+        <xs:enumeration value="right"/>
+        <xs:enumeration value="upper-left"/>
+        <xs:enumeration value="upper-center"/>
+        <xs:enumeration value="upper-right"/>
+        <xs:enumeration value="middle-left"/>
+        <xs:enumeration value="middle-center"/>
+        <xs:enumeration value="middle-right"/>
+        <xs:enumeration value="lower-left"/>
+        <xs:enumeration value="lower-center"/>
+        <xs:enumeration value="lower-right"/>
+      </xs:restriction>
+    </xs:simpleType>
+  </xs:attribute>
+  <xs:attribute name="stretch" type="xs:boolean"/>
 </xs:attributeGroup>
 
 <xs:simpleType name="float2Type">
