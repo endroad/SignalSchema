@@ -165,6 +165,10 @@
   <xs:attribute name="border-color" type="colorType" />
   <xs:attribute name="btn-key" type="keyType" />
   <xs:attribute name="emissive" type="xs:decimal"/>
+  <xs:attribute name="background-emissive" type="xs:decimal"/>
+  <xs:attribute name="border-emissive" type="xs:decimal"/>
+  <xs:attribute name="text-justify" type="xs:decimal"/>
+  <xs:attribute name="stretch" type="xs:decimal"/>
 </xs:attributeGroup>
 
 <xs:simpleType name="float2Type">
@@ -280,6 +284,8 @@
         <xs:enumeration value = "min-angle"/>
         <xs:enumeration value = "max-angle"/>
         <xs:enumeration value = "emissive"/>
+        <xs:enumeration value = "background-emissive"/>
+        <xs:enumeration value = "border-emissive"/>
       </xs:restriction>
     </xs:simpleType>
   </xs:attribute>
