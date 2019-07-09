@@ -164,6 +164,7 @@
   <xs:attribute name="border-thickness" type="xs:decimal" />
   <xs:attribute name="border-color" type="colorType" />
   <xs:attribute name="btn-key" type="keyType" />
+  <xs:attribute name="emissive" type="xs:decimal"/>
 </xs:attributeGroup>
 
 <xs:simpleType name="float2Type">
@@ -180,7 +181,7 @@
 
 <xs:simpleType name="extentType">
   <xs:restriction base="xs:string">
-    <xs:pattern value="(\s*(left|right|top|bottom|l|r|t|b)\s*:\s*[0-9\.\-+]+\s*){1,4}"/>
+    <xs:pattern value="((left|right|top|bottom|l|t|r|b)\s*:\s*)?[\-0-9\.]+[,\s]?"/>
   </xs:restriction>
 </xs:simpleType>
 
@@ -278,6 +279,7 @@
         <xs:enumeration value = "inner-radius"/>
         <xs:enumeration value = "min-angle"/>
         <xs:enumeration value = "max-angle"/>
+        <xs:enumeration value = "emissive"/>
       </xs:restriction>
     </xs:simpleType>
   </xs:attribute>
