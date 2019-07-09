@@ -47,20 +47,28 @@
       },
       "extent":
       {
-        "type":"object",
-        "properties": 
-        {
-          "l" : {"type":"number"},
-          "t" : {"type":"number"},
-          "r" : {"type":"number"},
-          "b" : {"type":"number"},
+        "anyOf": 
+        [
+          {
+            "type":"object",
+            "properties": 
+            {
+              "l" : {"type":"number"},
+              "t" : {"type":"number"},
+              "r" : {"type":"number"},
+              "b" : {"type":"number"},
 
-          "left" : {"type":"number"},
-          "top" : {"type":"number"},
-          "right" : {"type":"number"},
-          "bottom" : {"type":"number"}
-        },
-        "additionalProperties": false
+              "left" : {"type":"number"},
+              "top" : {"type":"number"},
+              "right" : {"type":"number"},
+              "bottom" : {"type":"number"}
+            },
+            "additionalProperties": false
+          },
+          {
+            "type" : "number"            
+          }
+        ]
       },
       "key":
       {
@@ -140,7 +148,8 @@
                 "radius":             { "$ref": "#/definitions/transitionValue" },
                 "inner-radius":       { "$ref": "#/definitions/transitionValue" },
                 "min-angle":          { "$ref": "#/definitions/transitionValue" },
-                "max-angle":          { "$ref": "#/definitions/transitionValue" }
+                "max-angle":          { "$ref": "#/definitions/transitionValue" },
+                "emissive":           { "$ref": "#/definitions/transitionValue" }
               },
               "additionalProperties": false
             },   
@@ -194,8 +203,9 @@
             "btn-key" : { "$ref": "#/definitions/key" },
             "radius": { "type" :"number" },
             "inner-radius": { "type" :"number" },
-            "min-angle": { "type" :"number" },
-            "max-angle": { "type" :"number" }
+            "min-angle": { "type" : "number" },
+            "max-angle": { "type" : "number" },
+            "emissive" : { "type" : "number" }
         },
         "additionalProperties": false
       }                   
