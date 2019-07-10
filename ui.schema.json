@@ -333,6 +333,7 @@
     },
     "patternProperties" :
     {      
+      "^include(s)?(.+)" : {"$ref": "#/definitions/includeBlock"},
       "\\s*((\\.|#)?[a-zA-Z0-9_\\-]+\\s*)*\\s*(:\\s*(focus|hidden|normal|selected|disabled|pressed))?\\s*[>]?" :
       {
         "type" : "object",
