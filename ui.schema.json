@@ -425,7 +425,7 @@
             "pivot" :                 { "$ref" : "#/definitions/vec2" },
             "color" :                 { "$ref" : "#/definitions/colorValue" },
             "font" :                  { "type" : "string" },
-            "textSize" :              { "$ref" : "#/definitions/integerOrVar" },
+            "text-size" :             { "$ref" : "#/definitions/integerOrVar" },
             "background-color" :      { "$ref" : "#/definitions/colorValue" },
             "background-image" :      { "type" : "string" },
             "backgroud-opacity" :     { "$ref" : "#/definitions/numberOrVar" },
