@@ -1,9 +1,9 @@
 {   
-    "definitions": 
+    "definitions" : 
     {
-      "anyType":
+      "anyType" :
       {
-        "anyOf": 
+        "anyOf" : 
         [
           { "type" : "array"},
           { "type" : "integer"},
@@ -13,140 +13,218 @@
           { "type" : "object"}              
         ]
       },
-      "variable":
+      "variable" :
       {
         "type" : "string",
-        "pattern": "^\\s*\\$.+"
+        "pattern" : "^\\s*\\$.+"
       },
-      "animationValue": 
-      {
-        "type": "object",
-        "properties": 
-        {
-          "duration": { "type": "number" },
-          "interpolation" : { "type" : "string", "enum" : ["linear","ease-in","ease-out","ease-in-out","custom"] },
-          "curve": { "type": "string" },
-          "from": { "$ref": "#/definitions/anyType" },
-          "to": { "$ref": "#/definitions/anyType" }
-        },
-        "required": ["duration"]
-      },
-      "transitionValue": 
-      {
-        "type": "object",
-        "properties": 
-        {
-          "duration": { "type": "number" },
-          "interpolation" : { "type" : "string", "enum" : ["linear","ease-in","ease-out","ease-in-out","custom"] },
-          "curve": { "type": "string" },
-          "scope" : { "type" : "string", "enum" : ["permanent", "state-only"] }
-        },
-        "required": ["duration"]
-      },
-      "colorValue":
-      {
-        "anyOf": 
-        [ 
-          { "$ref": "#/definitions/variable" },
-          {
-            "type" : "string", 
-            "pattern": "#([a-fA-F0-9]{8}|[a-fA-F0-9]{6})$"
-          }
-        ]        
-      },
-      "vec2":
-      {
-        "type":"array", 
-        "items": {
-          "type": "number"
-        },
-        "maxItems": 2,
-        "minItems": 2
-      },
-      "vec3":
-      {
-        "type":"array", 
-        "items": {
-          "type": "number"
-        },
-        "maxItems": 3,
-        "minItems": 3
-      },
-      "vec4":
-      {
-        "type":"array", 
-        "items": {
-          "type": "number"
-        },
-        "maxItems": 4,
-        "minItems": 4
-      },
-      "extent":
+      "numberOrVar":
       {
         "anyOf": 
         [
+          { "$ref" : "#/definitions/variable"},
           {
-            "type":"object",
-            "properties": 
-            {
-              "l" : {"type":"number"},
-              "t" : {"type":"number"},
-              "r" : {"type":"number"},
-              "b" : {"type":"number"},
-
-              "left" : {"type":"number"},
-              "top" : {"type":"number"},
-              "right" : {"type":"number"},
-              "bottom" : {"type":"number"}
+            "type" : "number"
+          }
+        ]
+      },
+      "booleanOrVar":
+      {
+        "anyOf": 
+        [
+          { "$ref" : "#/definitions/variable"},
+          { "type" : "boolean" }
+        ]
+      },      
+      "integerOrVar":
+      {
+        "anyOf": 
+        [
+          { "$ref" : "#/definitions/variable"},
+          { "type" : "integer" }
+        ]
+      },
+      
+      "animationValue" : 
+      {
+        "type" : "object",
+        "properties" : 
+        {
+          "duration" : { "type" : "number" },
+          "interpolation" : { "type" : "string", "enum" : ["linear","ease-in","ease-out","ease-in-out","custom"] },
+          "curve" : { "type" : "string" },
+          "from" : { "$ref" : "#/definitions/anyType" },
+          "to" : { "$ref" : "#/definitions/anyType" }
+        },
+        "required" : ["duration"]
+      },
+      "transitionValue" : 
+      {
+        "type" : "object",
+        "properties" : 
+        {
+          "duration" : { "type" : "number" },
+          "interpolation" : { "type" : "string", "enum" : ["linear","ease-in","ease-out","ease-in-out","custom"] },
+          "curve" : { "type" : "string" },
+          "scope" : { "type" : "string", "enum" : ["permanent", "state-only"] }
+        },
+        "required" : ["duration"]
+      },
+      "colorValue" :
+      {
+        "anyOf" : 
+        [ 
+          { "$ref" : "#/definitions/variable" },
+          {
+            "type" : "string", 
+            "pattern" : "#([a-fA-F0-9]{8}|[a-fA-F0-9]{6})$"
+          }
+        ]        
+      },
+      "vec2" :
+      {
+        "anyOf" : 
+        [
+          { "$ref" : "#/definitions/variable" },
+          {
+            "type" :"array", 
+            "items" : {
+              "type" : "number"
             },
-            "additionalProperties": false
+            "maxItems" : 2,
+            "minItems" : 2
+          }
+        ]
+      },
+      "vec3" :
+      {
+        "anyOf" : 
+        [
+          { "$ref" : "#/definitions/variable" },
+          {
+            "type" :"array", 
+            "items" : {
+              "type" : "number"
+            },
+            "maxItems" : 3,
+            "minItems" : 3
+          }
+        ]
+      },
+      "vec4" :
+      {
+        "anyOf" : 
+        [
+          { "$ref" : "#/definitions/variable" },
+          {
+            "type" :"array", 
+            "items" : {
+              "type" : "number"
+            },
+            "maxItems" : 4,
+            "minItems" : 4
+          }
+        ]
+      },
+      "axis":
+      {
+        "anyOf": 
+        [
+          { "$ref": "#/definitions/variable" },
+          {
+            "type" : "string", 
+            "enum" : ["horizontal", "vertical"]
+          }
+        ]
+      },
+      "justify" : 
+      {
+        "anyOf":
+        [
+          { "$ref" : "#/definitions/variable" },
+          { "type" : "string", "enum" : ["start","center","end","space between","space around","space evenly"] }
+        ]
+      },
+      "align" : 
+      {
+        "anyOf":
+        [
+          { "$ref" : "#/definitions/variable" },
+          { "type" : "string", "enum" : ["start", "center", "end", "baseline" ] }
+        ]
+      },
+      "extent" :
+      {        
+        "anyOf" : 
+        [
+          {
+            "type" :"object",
+            "properties" : 
+            {
+              "l" : {"type" :"number"},
+              "t" : {"type" :"number"},
+              "r" : {"type" :"number"},
+              "b" : {"type" :"number"},
+
+              "left" : {"type" :"number"},
+              "top" : {"type" :"number"},
+              "right" : {"type" :"number"},
+              "bottom" : {"type" :"number"}
+            },
+            "additionalProperties" : false
           },
           {
             "type" : "number"            
           },
           {
-            "type":"array", 
-            "items": { "type": "number" },
-            "maxItems": 4,
-            "minItems": 4           
+            "type" :"array", 
+            "items" : { "type" : "number" },
+            "maxItems" : 4,
+            "minItems" : 4           
           },
           {
-            "type":"array", 
-            "items": { "type": "number" },
-            "maxItems": 2,
-            "minItems": 2           
+            "type" :"array", 
+            "items" : { "type" : "number" },
+            "maxItems" : 2,
+            "minItems" : 2           
           }
         ]
       },
-      "key":
+      "key" :
       {
-        "type" : "string",
-        "enum" : 
+        "anyOf" : 
         [
-          "validate", 
-          "do", 
-          "back", 
-          "alt", 
-          "previous", 
-          "next", 
-          "down", 
-          "up", 
-          "left", 
-          "right", 
-          "start", 
-          "esc", 
-          "aux0", 
-          "aux1", 
-          "aux2", 
-          "aux3", 
-          "interact"
-        ] 
+          { "$ref" : "#/definitions/variable" },
+          {
+            "type" : "string",
+            "enum" : 
+            [
+              "validate", 
+              "do", 
+              "back", 
+              "alt", 
+              "previous", 
+              "next", 
+              "down", 
+              "up", 
+              "left", 
+              "right", 
+              "start", 
+              "esc", 
+              "aux0", 
+              "aux1", 
+              "aux2", 
+              "aux3", 
+              "interact"
+            ] 
+          }
+        ]
       },
-      "textAnchor":
+      "textAnchor" :
       {
-        "anyOf": 
+        "anyOf" : 
         [
-          { "$ref": "#/definitions/variable" },
+          { "$ref" : "#/definitions/variable" },
           {
             "type" : "string", 
             "enum" : 
@@ -167,211 +245,211 @@
           }
         ]         
       },
-      "variableBlock":
+      "variableBlock" :
       {
         "type" : "object",
-        "patternProperties": 
+        "patternProperties" : 
         {
-          "^\\s*\\$[A-Za-z_][A-Za-z0-9\\-_]*\\s*$":
+          "^\\s*\\$[A-Za-z_][A-Za-z0-9\\-_]*\\s*$" :
           {
-            "$ref": "#/definitions/anyType"
+            "$ref" : "#/definitions/anyType"
           }
         }     
       },
-      "includeBlock":
+      "includeBlock" :
       {
         "type" : "array",
-        "items": { "type": "string" }
+        "items" : { "type" : "string" }
       },
-      "animationBlock":
+      "animationBlock" :
       {
         "type" : "object",
-        "patternProperties": 
+        "patternProperties" : 
         {
-          ".+":
+          ".+" :
           {
             "type" :"object",
-            "properties":
+            "properties" :
               {
-                "color" :             { "$ref": "#/definitions/animationValue" },
-                "width" :             { "$ref": "#/definitions/animationValue" },
-                "height" :            { "$ref": "#/definitions/animationValue" },
-                "size" :              { "$ref": "#/definitions/animationValue" },                
-                "min-width" :         { "$ref": "#/definitions/animationValue" },
-                "min-height" :        { "$ref": "#/definitions/animationValue" },
-                "min-size" :          { "$ref": "#/definitions/animationValue" },
-                "max-width" :         { "$ref": "#/definitions/animationValue" },
-                "max-height" :        { "$ref": "#/definitions/animationValue" },
-                "max-size" :          { "$ref": "#/definitions/animationValue" },
-                "position" :          { "$ref": "#/definitions/animationValue" },
-                "position3D" :        { "$ref": "#/definitions/animationValue" },
-                "x" :                 { "$ref": "#/definitions/animationValue" },
-                "y" :                 { "$ref": "#/definitions/animationValue" },
-                "z" :                 { "$ref": "#/definitions/animationValue" },
-                "grow" :              { "$ref": "#/definitions/animationValue" },
-                "shrink" :            { "$ref": "#/definitions/animationValue" },
-                "padding" :           { "$ref": "#/definitions/animationValue" },
-                "padding-left" :      { "$ref": "#/definitions/animationValue" },
-                "padding-top" :       { "$ref": "#/definitions/animationValue" },
-                "padding-right" :     { "$ref": "#/definitions/animationValue" },
-                "padding-bottom" :    { "$ref": "#/definitions/animationValue" },
-                "margin" :            { "$ref": "#/definitions/animationValue" },
-                "margin-left" :       { "$ref": "#/definitions/animationValue" },
-                "margin-top" :        { "$ref": "#/definitions/animationValue" },
-                "margin-right" :      { "$ref": "#/definitions/animationValue" },
-                "margin-bottom" :     { "$ref": "#/definitions/animationValue" },
-                "background-color" :  { "$ref": "#/definitions/animationValue" },                
-                "backgroud-opacity" : { "$ref": "#/definitions/animationValue" },
-                "background-left" :   { "$ref": "#/definitions/animationValue" },
-                "background-top" :    { "$ref": "#/definitions/animationValue" },
-                "background-right" :  { "$ref": "#/definitions/animationValue" },
-                "background-bottom" : { "$ref": "#/definitions/animationValue" },
-                "background-offset" : { "$ref": "#/definitions/animationValue" },
-                "background-z" :      { "$ref": "#/definitions/animationValue" },
-                "border-thickness" :  { "$ref": "#/definitions/animationValue" },
-                "border-color" :      { "$ref": "#/definitions/animationValue" },
-                "radius":             { "$ref": "#/definitions/animationValue" },
-                "inner-radius":       { "$ref": "#/definitions/animationValue" },
-                "min-angle":          { "$ref": "#/definitions/animationValue" },
-                "max-angle":          { "$ref": "#/definitions/animationValue" },
-                "emissive":           { "$ref": "#/definitions/animationValue" },
-                "background-emissive":{ "$ref": "#/definitions/animationValue" },
-                "border-emissive":    { "$ref": "#/definitions/animationValue" }
+                "color" :              { "$ref" : "#/definitions/animationValue" },
+                "width" :              { "$ref" : "#/definitions/animationValue" },
+                "height" :             { "$ref" : "#/definitions/animationValue" },
+                "size" :               { "$ref" : "#/definitions/animationValue" },                
+                "min-width" :          { "$ref" : "#/definitions/animationValue" },
+                "min-height" :         { "$ref" : "#/definitions/animationValue" },
+                "min-size" :           { "$ref" : "#/definitions/animationValue" },
+                "max-width" :          { "$ref" : "#/definitions/animationValue" },
+                "max-height" :         { "$ref" : "#/definitions/animationValue" },
+                "max-size" :           { "$ref" : "#/definitions/animationValue" },
+                "position" :           { "$ref" : "#/definitions/animationValue" },
+                "position3D" :         { "$ref" : "#/definitions/animationValue" },
+                "x" :                  { "$ref" : "#/definitions/animationValue" },
+                "y" :                  { "$ref" : "#/definitions/animationValue" },
+                "z" :                  { "$ref" : "#/definitions/animationValue" },
+                "grow" :               { "$ref" : "#/definitions/animationValue" },
+                "shrink" :             { "$ref" : "#/definitions/animationValue" },
+                "padding" :            { "$ref" : "#/definitions/animationValue" },
+                "padding-left" :       { "$ref" : "#/definitions/animationValue" },
+                "padding-top" :        { "$ref" : "#/definitions/animationValue" },
+                "padding-right" :      { "$ref" : "#/definitions/animationValue" },
+                "padding-bottom" :     { "$ref" : "#/definitions/animationValue" },
+                "margin" :             { "$ref" : "#/definitions/animationValue" },
+                "margin-left" :        { "$ref" : "#/definitions/animationValue" },
+                "margin-top" :         { "$ref" : "#/definitions/animationValue" },
+                "margin-right" :       { "$ref" : "#/definitions/animationValue" },
+                "margin-bottom" :      { "$ref" : "#/definitions/animationValue" },
+                "background-color" :   { "$ref" : "#/definitions/animationValue" },                
+                "backgroud-opacity" :  { "$ref" : "#/definitions/animationValue" },
+                "background-left" :    { "$ref" : "#/definitions/animationValue" },
+                "background-top" :     { "$ref" : "#/definitions/animationValue" },
+                "background-right" :   { "$ref" : "#/definitions/animationValue" },
+                "background-bottom" :  { "$ref" : "#/definitions/animationValue" },
+                "background-offset" :  { "$ref" : "#/definitions/animationValue" },
+                "background-z" :       { "$ref" : "#/definitions/animationValue" },
+                "border-thickness" :   { "$ref" : "#/definitions/animationValue" },
+                "border-color" :       { "$ref" : "#/definitions/animationValue" },
+                "radius" :             { "$ref" : "#/definitions/animationValue" },
+                "inner-radius" :       { "$ref" : "#/definitions/animationValue" },
+                "min-angle" :          { "$ref" : "#/definitions/animationValue" },
+                "max-angle" :          { "$ref" : "#/definitions/animationValue" },
+                "emissive" :           { "$ref" : "#/definitions/animationValue" },
+                "background-emissive" :{ "$ref" : "#/definitions/animationValue" },
+                "border-emissive" :    { "$ref" : "#/definitions/animationValue" }
               },
-              "additionalProperties": false
+              "additionalProperties" : false
           }
         }
       }
     },
     "type" : "object",
-    "properties": 
+    "properties" : 
     {
-      "includes":  { "$ref" : "#/definitions/includeBlock"},
-      "include":  { "$ref" : "#/definitions/includeBlock"},
-      "variables": { "$ref" : "#/definitions/variableBlock"},
-      "vars":      { "$ref" : "#/definitions/variableBlock"},
-      "animations": { "$ref": "#/definitions/animationBlock" },
-      "anims":      { "$ref": "#/definitions/animationBlock" }
+      "includes" :  { "$ref" : "#/definitions/includeBlock"},
+      "include" :  { "$ref" : "#/definitions/includeBlock"},
+      "variables" : { "$ref" : "#/definitions/variableBlock"},
+      "vars" :      { "$ref" : "#/definitions/variableBlock"},
+      "animations" : { "$ref" : "#/definitions/animationBlock" },
+      "anims" :      { "$ref" : "#/definitions/animationBlock" }
     },
-    "patternProperties":
+    "patternProperties" :
     {      
-      "\\s*((\\.|#)?[a-zA-Z0-9_\\-]+\\s*)*\\s*(:\\s*(focus|hidden|normal|selected|disabled|pressed))?\\s*[>]?":
+      "\\s*((\\.|#)?[a-zA-Z0-9_\\-]+\\s*)*\\s*(:\\s*(focus|hidden|normal|selected|disabled|pressed))?\\s*[>]?" :
       {
         "type" : "object",
-        "properties":
+        "properties" :
         {
             "transitions" :
             {
               "type" : "object",
-              "properties":
+              "properties" :
               {
-                "color" :             { "$ref": "#/definitions/transitionValue" },
-                "width" :             { "$ref": "#/definitions/transitionValue" },
-                "height" :            { "$ref": "#/definitions/transitionValue" },
-                "size" :              { "$ref": "#/definitions/transitionValue" },                
-                "min-width" :         { "$ref": "#/definitions/transitionValue" },
-                "min-height" :        { "$ref": "#/definitions/transitionValue" },
-                "min-size" :          { "$ref": "#/definitions/transitionValue" },
-                "max-width" :         { "$ref": "#/definitions/transitionValue" },
-                "max-height" :        { "$ref": "#/definitions/transitionValue" },
-                "max-size" :          { "$ref": "#/definitions/transitionValue" },
-                "position" :          { "$ref": "#/definitions/transitionValue" },
-                "position3D" :        { "$ref": "#/definitions/transitionValue" },
-                "x" :                 { "$ref": "#/definitions/transitionValue" },
-                "y" :                 { "$ref": "#/definitions/transitionValue" },
-                "z" :                 { "$ref": "#/definitions/transitionValue" },
-                "grow" :              { "$ref": "#/definitions/transitionValue" },
-                "shrink" :            { "$ref": "#/definitions/transitionValue" },
-                "padding" :           { "$ref": "#/definitions/transitionValue" },
-                "padding-left" :      { "$ref": "#/definitions/transitionValue" },
-                "padding-top" :       { "$ref": "#/definitions/transitionValue" },
-                "padding-right" :     { "$ref": "#/definitions/transitionValue" },
-                "padding-bottom" :    { "$ref": "#/definitions/transitionValue" },
-                "margin" :            { "$ref": "#/definitions/transitionValue" },
-                "margin-left" :       { "$ref": "#/definitions/transitionValue" },
-                "margin-top" :        { "$ref": "#/definitions/transitionValue" },
-                "margin-right" :      { "$ref": "#/definitions/transitionValue" },
-                "margin-bottom" :     { "$ref": "#/definitions/transitionValue" },
-                "background-color" :  { "$ref": "#/definitions/transitionValue" },                
-                "backgroud-opacity" : { "$ref": "#/definitions/transitionValue" },
-                "background-left" :   { "$ref": "#/definitions/transitionValue" },
-                "background-top" :    { "$ref": "#/definitions/transitionValue" },
-                "background-right" :  { "$ref": "#/definitions/transitionValue" },
-                "background-bottom" : { "$ref": "#/definitions/transitionValue" },
-                "background-offset" : { "$ref": "#/definitions/transitionValue" },
-                "background-z" :      { "$ref": "#/definitions/transitionValue" },
-                "border-thickness" :  { "$ref": "#/definitions/transitionValue" },
-                "border-color" :      { "$ref": "#/definitions/transitionValue" },
-                "radius":             { "$ref": "#/definitions/transitionValue" },
-                "inner-radius":       { "$ref": "#/definitions/transitionValue" },
-                "min-angle":          { "$ref": "#/definitions/transitionValue" },
-                "max-angle":          { "$ref": "#/definitions/transitionValue" },
-                "emissive":           { "$ref": "#/definitions/transitionValue" },
-                "background-emissive":{ "$ref": "#/definitions/transitionValue" },
-                "border-emissive":    { "$ref": "#/definitions/transitionValue" }
+                "color" :               { "$ref" : "#/definitions/transitionValue" },
+                "width" :               { "$ref" : "#/definitions/transitionValue" },
+                "height" :              { "$ref" : "#/definitions/transitionValue" },
+                "size" :                { "$ref" : "#/definitions/transitionValue" },                
+                "min-width" :           { "$ref" : "#/definitions/transitionValue" },
+                "min-height" :          { "$ref" : "#/definitions/transitionValue" },
+                "min-size" :            { "$ref" : "#/definitions/transitionValue" },
+                "max-width" :           { "$ref" : "#/definitions/transitionValue" },
+                "max-height" :          { "$ref" : "#/definitions/transitionValue" },
+                "max-size" :            { "$ref" : "#/definitions/transitionValue" },
+                "position" :            { "$ref" : "#/definitions/transitionValue" },
+                "position3D" :          { "$ref" : "#/definitions/transitionValue" },
+                "x" :                   { "$ref" : "#/definitions/transitionValue" },
+                "y" :                   { "$ref" : "#/definitions/transitionValue" },
+                "z" :                   { "$ref" : "#/definitions/transitionValue" },
+                "grow" :                { "$ref" : "#/definitions/transitionValue" },
+                "shrink" :              { "$ref" : "#/definitions/transitionValue" },
+                "padding" :             { "$ref" : "#/definitions/transitionValue" },
+                "padding-left" :        { "$ref" : "#/definitions/transitionValue" },
+                "padding-top" :         { "$ref" : "#/definitions/transitionValue" },
+                "padding-right" :       { "$ref" : "#/definitions/transitionValue" },
+                "padding-bottom" :      { "$ref" : "#/definitions/transitionValue" },
+                "margin" :              { "$ref" : "#/definitions/transitionValue" },
+                "margin-left" :         { "$ref" : "#/definitions/transitionValue" },
+                "margin-top" :          { "$ref" : "#/definitions/transitionValue" },
+                "margin-right" :        { "$ref" : "#/definitions/transitionValue" },
+                "margin-bottom" :       { "$ref" : "#/definitions/transitionValue" },
+                "background-color" :    { "$ref" : "#/definitions/transitionValue" },                
+                "backgroud-opacity" :   { "$ref" : "#/definitions/transitionValue" },
+                "background-left" :     { "$ref" : "#/definitions/transitionValue" },
+                "background-top" :      { "$ref" : "#/definitions/transitionValue" },
+                "background-right" :    { "$ref" : "#/definitions/transitionValue" },
+                "background-bottom" :   { "$ref" : "#/definitions/transitionValue" },
+                "background-offset" :   { "$ref" : "#/definitions/transitionValue" },
+                "background-z" :        { "$ref" : "#/definitions/transitionValue" },
+                "border-thickness" :    { "$ref" : "#/definitions/transitionValue" },
+                "border-color" :        { "$ref" : "#/definitions/transitionValue" },
+                "radius" :              { "$ref" : "#/definitions/transitionValue" },
+                "inner-radius" :        { "$ref" : "#/definitions/transitionValue" },
+                "min-angle" :           { "$ref" : "#/definitions/transitionValue" },
+                "max-angle" :           { "$ref" : "#/definitions/transitionValue" },
+                "emissive" :            { "$ref" : "#/definitions/transitionValue" },
+                "background-emissive" : { "$ref" : "#/definitions/transitionValue" },
+                "border-emissive" :     { "$ref" : "#/definitions/transitionValue" }
               },
-              "additionalProperties": false
+              "additionalProperties" : false
             },   
                    
-            "size" : { "$ref": "#/definitions/vec2" },
-            "width" : { "type":"number" },
-            "height" : { "type":"number" },
-            "min-size" : { "$ref": "#/definitions/vec2" },
-            "min-width" : { "type":"number" },
-            "min-height" : { "type":"number" },
-            "max-size" : { "$ref": "#/definitions/vec2" },
-            "max-width" : { "type":"number" },
-            "max-height" : { "type":"number" },
-            "position" : { "$ref": "#/definitions/vec2" },
-            "position3D" : { "$ref": "#/definitions/vec3" },
-            "x" : { "type":"number" },
-            "y" : { "type":"number" },
-            "z" : { "type":"number" },
-            "grow" : { "type":"number" },
-            "shrink" : { "type":"number" },
-            "padding" : { "$ref": "#/definitions/extent" },
-            "padding-left" : { "type":"number" },
-            "padding-top" : { "type":"number" },
-            "padding-right" : { "type":"number" },
-            "padding-bottom" : { "type":"number" },
-            "margin" :{ "$ref": "#/definitions/extent" },
-            "margin-left" : { "type":"number" },
-            "margin-top" : { "type":"number" },
-            "margin-right" : { "type":"number" },
-            "margin-bottom" : { "type":"number" },            
-            "axis" : { "type" : "string", "enum" : ["horizontal", "vertical"]},
-            "wrap" : { "type":"boolean" },
-            "justify" : { "type" : "string", "enum" : ["start","center","end","space between","space around","space evenly"] },
-            "align" : { "type" : "string", "enum" : ["start", "center", "end", "baseline" ] },
-            "pivot" : { "$ref": "#/definitions/vec2" },
-            "color" : { "$ref": "#/definitions/colorValue" },
-            "font" : { "type" : "string" },
-            "textSize" : { "type" : "integer" },
-            "background-color" : { "$ref": "#/definitions/colorValue" },
-            "background-image" : { "type" : "string" },
-            "backgroud-opacity" : { "type" : "number" },
-            "background-left" : { "type" : "number" },
-            "background-top" : { "type" : "number" },
-            "background-right" : { "type" : "number" },
-            "background-bottom" : { "type" : "number" },
-            "background-offset" : { "$ref": "#/definitions/vec2" },
-            "background-z" : { "type" : "number" },
-            "selectable" : { "type" : "boolean" },
-            "border-thickness" : { "type" : "number" },
-            "border-color" : { "$ref": "#/definitions/colorValue" },
-            "btn-key" : { "$ref": "#/definitions/key" },
-            "radius": { "type" :"number" },
-            "inner-radius": { "type" :"number" },
-            "min-angle": { "type" : "number" },
-            "max-angle": { "type" : "number" },
-            "emissive" : { "type" : "number" },
-            "background-emissive": { "type" : "number" },
-            "border-emissive": { "type" : "number" },
-            "text-alignment": { "$ref": "#/definitions/textAnchor" },
-            "stretch": { "type" : "boolean" }
+            "size" :                  { "$ref" : "#/definitions/vec2" },
+            "width" :                 { "$ref" : "#/definitions/numberOrVar" },
+            "height" :                { "$ref" : "#/definitions/numberOrVar" },
+            "min-size" :              { "$ref" : "#/definitions/vec2" },
+            "min-width" :             { "$ref" : "#/definitions/numberOrVar" },
+            "min-height" :            { "$ref" : "#/definitions/numberOrVar" },
+            "max-size" :              { "$ref" : "#/definitions/vec2" },
+            "max-width" :             { "$ref" : "#/definitions/numberOrVar" },
+            "max-height" :            { "$ref" : "#/definitions/numberOrVar" },
+            "position" :              { "$ref" : "#/definitions/vec2" },
+            "position3D" :            { "$ref" : "#/definitions/vec3" },
+            "x" :                     { "$ref" : "#/definitions/numberOrVar" },
+            "y" :                     { "$ref" : "#/definitions/numberOrVar" },
+            "z" :                     { "$ref" : "#/definitions/numberOrVar" },
+            "grow" :                  { "$ref" : "#/definitions/numberOrVar" },
+            "shrink" :                { "$ref" : "#/definitions/numberOrVar" },
+            "padding" :               { "$ref" : "#/definitions/extent" },
+            "padding-left" :          { "$ref" : "#/definitions/numberOrVar" },
+            "padding-top" :           { "$ref" : "#/definitions/numberOrVar" },
+            "padding-right" :         { "$ref" : "#/definitions/numberOrVar" },
+            "padding-bottom" :        { "$ref" : "#/definitions/numberOrVar" },
+            "margin" :                { "$ref" : "#/definitions/extent" },
+            "margin-left" :           { "$ref" : "#/definitions/numberOrVar" },
+            "margin-top" :            { "$ref" : "#/definitions/numberOrVar" },
+            "margin-right" :          { "$ref" : "#/definitions/numberOrVar" },
+            "margin-bottom" :         { "$ref" : "#/definitions/numberOrVar" },            
+            "axis" :                  { "$ref" : "#/definitions/axis"},
+            "wrap" :                  { "$ref" : "#/definitions/booleanOrVar" },
+            "justify" :               { "$ref" : "#/defintions/justify" },
+            "align" :                 { "$ref" : "#/defintions/align" },
+            "pivot" :                 { "$ref" : "#/definitions/vec2" },
+            "color" :                 { "$ref" : "#/definitions/colorValue" },
+            "font" :                  { "type" : "string" },
+            "textSize" :              { "$ref" : "#/definitions/integerOrVar" },
+            "background-color" :      { "$ref" : "#/definitions/colorValue" },
+            "background-image" :      { "type" : "string" },
+            "backgroud-opacity" :     { "$ref" : "#/definitions/numberOrVar" },
+            "background-left" :       { "$ref" : "#/definitions/numberOrVar" },
+            "background-top" :        { "$ref" : "#/definitions/numberOrVar" },
+            "background-right" :      { "$ref" : "#/definitions/numberOrVar" },
+            "background-bottom" :     { "$ref" : "#/definitions/numberOrVar" },
+            "background-offset" :     { "$ref" : "#/definitions/vec2" },
+            "background-z" :          { "$ref" : "#/definitions/numberOrVar" },
+            "selectable" :            { "$ref" : "#/definitions/booleanOrVar" },
+            "border-thickness" :      { "$ref" : "#/definitions/numberOrVar" },
+            "border-color" :          { "$ref" : "#/definitions/colorValue" },
+            "btn-key" :               { "$ref" : "#/definitions/key" },
+            "radius" :                { "$ref" : "#/definitions/numberOrVar" },
+            "inner-radius" :          { "$ref" : "#/definitions/numberOrVar" },
+            "min-angle" :             { "$ref" : "#/definitions/numberOrVar" },
+            "max-angle" :             { "$ref" : "#/definitions/numberOrVar" },
+            "emissive" :              { "$ref" : "#/definitions/numberOrVar" },
+            "background-emissive" :   { "$ref" : "#/definitions/numberOrVar" },
+            "border-emissive" :       { "$ref" : "#/definitions/numberOrVar" },
+            "text-alignment" :        { "$ref" : "#/definitions/textAnchor" },
+            "stretch" :               { "$ref" : "#/definitions/booleanOrVar" }
         },
-        "additionalProperties": false
+        "additionalProperties" : false
       }                   
     },  
-    "additionalProperties": false
+    "additionalProperties" : false
 }
