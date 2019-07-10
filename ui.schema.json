@@ -367,7 +367,7 @@
             "emissive" : { "type" : "number" },
             "background-emissive": { "type" : "number" },
             "border-emissive": { "type" : "number" },
-            "text-alignment": { },
+            "text-alignment": { "$ref": "#/definitions/textAnchor" },
             "stretch": { "type" : "boolean" }
         },
         "additionalProperties": false
