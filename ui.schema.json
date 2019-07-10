@@ -1,6 +1,36 @@
 {   
     "definitions": 
     {
+      "anyType":
+      {
+        "anyOf": 
+        [
+          { "type" : "array"},
+          { "type" : "integer"},
+          { "type" : "string"},
+          { "type" : "number"},
+          { "type" : "boolean"},
+          { "type" : "object"}              
+        ]
+      },
+      "variable":
+      {
+        "type" : "string",
+        "pattern": "^\\s*\\$.+"
+      },
+      "animationValue": 
+      {
+        "type": "object",
+        "properties": 
+        {
+          "duration": { "type": "number" },
+          "interpolation" : { "type" : "string", "enum" : ["linear","ease-in","ease-out","ease-in-out","custom"] },
+          "curve": { "type": "string" },
+          "from": { "$ref": "#/definitions/anyType" },
+          "to": { "$ref": "#/definitions/anyType" }
+        },
+        "required": ["duration"]
+      },
       "transitionValue": 
       {
         "type": "object",
@@ -15,8 +45,14 @@
       },
       "colorValue":
       {
-        "type" : "string", 
-        "pattern": "#([a-fA-F0-9]{8}|[a-fA-F0-9]{6})$"
+        "anyOf": 
+        [ 
+          { "$ref": "#/definitions/variable" },
+          {
+            "type" : "string", 
+            "pattern": "#([a-fA-F0-9]{8}|[a-fA-F0-9]{6})$"
+          }
+        ]        
       },
       "vec2":
       {
@@ -105,11 +141,120 @@
           "aux3", 
           "interact"
         ] 
+      },
+      "textAnchor":
+      {
+        "anyOf": 
+        [
+          { "$ref": "#/definitions/variable" },
+          {
+            "type" : "string", 
+            "enum" : 
+            [
+              "left",
+              "center",
+              "right",
+              "upper-left",
+              "upper-center",
+              "upper-right",
+              "middle-left",
+              "middle-center",
+              "middle-right",
+              "lower-left", 
+              "lower-center",
+              "lower-right"
+            ]
+          }
+        ]         
+      },
+      "variableBlock":
+      {
+        "type" : "object",
+        "patternProperties": 
+        {
+          "^\\s*\\$[A-Za-z_][A-Za-z0-9\\-_]*\\s*$":
+          {
+            "$ref": "#/definitions/anyType"
+          }
+        }     
+      },
+      "includeBlock":
+      {
+        "type" : "array",
+        "items": { "type": "string" }
+      },
+      "animationBlock":
+      {
+        "type" : "object",
+        "patternProperties": 
+        {
+          ".+":
+          {
+            "type" :"object",
+            "properties":
+              {
+                "color" :             { "$ref": "#/definitions/animationValue" },
+                "width" :             { "$ref": "#/definitions/animationValue" },
+                "height" :            { "$ref": "#/definitions/animationValue" },
+                "size" :              { "$ref": "#/definitions/animationValue" },                
+                "min-width" :         { "$ref": "#/definitions/animationValue" },
+                "min-height" :        { "$ref": "#/definitions/animationValue" },
+                "min-size" :          { "$ref": "#/definitions/animationValue" },
+                "max-width" :         { "$ref": "#/definitions/animationValue" },
+                "max-height" :        { "$ref": "#/definitions/animationValue" },
+                "max-size" :          { "$ref": "#/definitions/animationValue" },
+                "position" :          { "$ref": "#/definitions/animationValue" },
+                "position3D" :        { "$ref": "#/definitions/animationValue" },
+                "x" :                 { "$ref": "#/definitions/animationValue" },
+                "y" :                 { "$ref": "#/definitions/animationValue" },
+                "z" :                 { "$ref": "#/definitions/animationValue" },
+                "grow" :              { "$ref": "#/definitions/animationValue" },
+                "shrink" :            { "$ref": "#/definitions/animationValue" },
+                "padding" :           { "$ref": "#/definitions/animationValue" },
+                "padding-left" :      { "$ref": "#/definitions/animationValue" },
+                "padding-top" :       { "$ref": "#/definitions/animationValue" },
+                "padding-right" :     { "$ref": "#/definitions/animationValue" },
+                "padding-bottom" :    { "$ref": "#/definitions/animationValue" },
+                "margin" :            { "$ref": "#/definitions/animationValue" },
+                "margin-left" :       { "$ref": "#/definitions/animationValue" },
+                "margin-top" :        { "$ref": "#/definitions/animationValue" },
+                "margin-right" :      { "$ref": "#/definitions/animationValue" },
+                "margin-bottom" :     { "$ref": "#/definitions/animationValue" },
+                "background-color" :  { "$ref": "#/definitions/animationValue" },                
+                "backgroud-opacity" : { "$ref": "#/definitions/animationValue" },
+                "background-left" :   { "$ref": "#/definitions/animationValue" },
+                "background-top" :    { "$ref": "#/definitions/animationValue" },
+                "background-right" :  { "$ref": "#/definitions/animationValue" },
+                "background-bottom" : { "$ref": "#/definitions/animationValue" },
+                "background-offset" : { "$ref": "#/definitions/animationValue" },
+                "background-z" :      { "$ref": "#/definitions/animationValue" },
+                "border-thickness" :  { "$ref": "#/definitions/animationValue" },
+                "border-color" :      { "$ref": "#/definitions/animationValue" },
+                "radius":             { "$ref": "#/definitions/animationValue" },
+                "inner-radius":       { "$ref": "#/definitions/animationValue" },
+                "min-angle":          { "$ref": "#/definitions/animationValue" },
+                "max-angle":          { "$ref": "#/definitions/animationValue" },
+                "emissive":           { "$ref": "#/definitions/animationValue" },
+                "background-emissive":{ "$ref": "#/definitions/animationValue" },
+                "border-emissive":    { "$ref": "#/definitions/animationValue" }
+              },
+              "additionalProperties": false
+          }
+        }
       }
     },
     "type" : "object",
-    "patternProperties":
+    "properties": 
     {
+      "includes":  { "$ref" : "#/definitions/includeBlock"},
+      "include":  { "$ref" : "#/definitions/includeBlock"},
+      "variables": { "$ref" : "#/definitions/variableBlock"},
+      "vars":      { "$ref" : "#/definitions/variableBlock"},
+      "animations": { "$ref": "#/definitions/animationBlock" },
+      "anims":      { "$ref": "#/definitions/animationBlock" }
+    },
+    "patternProperties":
+    {      
       "\\s*((\\.|#)?[a-zA-Z0-9_\\-]+\\s*)*\\s*(:\\s*(focus|hidden|normal|selected|disabled|pressed))?\\s*[>]?":
       {
         "type" : "object",
@@ -222,22 +367,7 @@
             "emissive" : { "type" : "number" },
             "background-emissive": { "type" : "number" },
             "border-emissive": { "type" : "number" },
-            "text-alignment": { "type" : "string", 
-              "enum" : 
-              [
-                "left",
-                "center",
-                "right",
-                "upper-left",
-                "upper-center",
-                "upper-right",
-                "middle-left",
-                "middle-center",
-                "middle-right",
-                "lower-left", 
-                "lower-center",
-                "lower-right"
-              ] },
+            "text-alignment": { },
             "stretch": { "type" : "boolean" }
         },
         "additionalProperties": false
