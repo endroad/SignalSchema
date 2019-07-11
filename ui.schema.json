@@ -314,7 +314,17 @@
                 "max-angle" :          { "$ref" : "#/definitions/animationValue" },
                 "emissive" :           { "$ref" : "#/definitions/animationValue" },
                 "background-emissive" :{ "$ref" : "#/definitions/animationValue" },
-                "border-emissive" :    { "$ref" : "#/definitions/animationValue" }
+                "border-emissive" :    { "$ref" : "#/definitions/animationValue" },
+                "scale" :              { "$ref" : "#/definitions/animationValue" },         
+                "scale-x":             { "$ref" : "#/definitions/animationValue" },          
+                "scale-y":             { "$ref" : "#/definitions/animationValue" },          
+                "border-left":         { "$ref" : "#/definitions/animationValue" },              
+                "border-top":          { "$ref" : "#/definitions/animationValue" },             
+                "border-right":        { "$ref" : "#/definitions/animationValue" },               
+                "border-bottom":       { "$ref" : "#/definitions/animationValue" },                
+                "alpha":               { "$ref" : "#/definitions/animationValue" },        
+                "rotation":            { "$ref" : "#/definitions/animationValue" },           
+                "rotation-3D":         { "$ref" : "#/definitions/animationValue" }              
               },
               "additionalProperties" : false
           }
@@ -387,7 +397,17 @@
                 "max-angle" :           { "$ref" : "#/definitions/transitionValue" },
                 "emissive" :            { "$ref" : "#/definitions/transitionValue" },
                 "background-emissive" : { "$ref" : "#/definitions/transitionValue" },
-                "border-emissive" :     { "$ref" : "#/definitions/transitionValue" }
+                "border-emissive" :     { "$ref" : "#/definitions/transitionValue" },
+                "scale" :               { "$ref" : "#/definitions/transitionValue" },
+                "scale-x":              { "$ref" : "#/definitions/transitionValue" },
+                "scale-y":              { "$ref" : "#/definitions/transitionValue" },
+                "border-left":          { "$ref" : "#/definitions/transitionValue" },
+                "border-top":           { "$ref" : "#/definitions/transitionValue" },
+                "border-right":         { "$ref" : "#/definitions/transitionValue" },
+                "border-bottom":        { "$ref" : "#/definitions/transitionValue" },
+                "alpha":                { "$ref" : "#/definitions/transitionValue" },
+                "rotation":             { "$ref" : "#/definitions/transitionValue" },
+                "rotation-3D":          { "$ref" : "#/definitions/transitionValue" }
               },
               "additionalProperties" : false
             },   
@@ -446,8 +466,18 @@
             "emissive" :              { "$ref" : "#/definitions/numberOrVar" },
             "background-emissive" :   { "$ref" : "#/definitions/numberOrVar" },
             "border-emissive" :       { "$ref" : "#/definitions/numberOrVar" },
-            "text-alignment" :        { "$ref" : "#/definitions/textAnchor" },
-            "stretch" :               { "$ref" : "#/definitions/booleanOrVar" }
+            "text-align" :        { "$ref" : "#/definitions/textAnchor" },
+            "stretch" :               { "$ref" : "#/definitions/booleanOrVar" },
+            "scale" :                 { "$ref" : "#/definitions/vec2" },
+            "scale-x":                { "$ref" : "#/definitions/numberOrVar" },
+            "scale-y":                { "$ref" : "#/definitions/numberOrVar" },
+            "border-left":            { "$ref" : "#/definitions/numberOrVar" },
+            "border-top":             { "$ref" : "#/definitions/numberOrVar" },
+            "border-right":           { "$ref" : "#/definitions/numberOrVar" },
+            "border-bottom":          { "$ref" : "#/definitions/numberOrVar" },
+            "alpha":                  { "$ref" : "#/definitions/numberOrVar" },
+            "rotation":               { "$ref" : "#/definitions/numberOrVar" },
+            "rotation-3D":            { "$ref" : "#/definitions/vec3" }
         },
         "additionalProperties" : false
       }                   

@@ -167,7 +167,7 @@
   <xs:attribute name="emissive" type="xs:decimal"/>
   <xs:attribute name="background-emissive" type="xs:decimal"/>
   <xs:attribute name="border-emissive" type="xs:decimal"/>
-  <xs:attribute name="text-aligment">
+  <xs:attribute name="text-align">
     <xs:simpleType>
       <xs:restriction base="xs:string">
         <xs:enumeration value="left"/>
@@ -186,6 +186,16 @@
     </xs:simpleType>
   </xs:attribute>
   <xs:attribute name="stretch" type="xs:boolean"/>
+  <xs:attribute name="scale" type="float2Type"/>
+  <xs:attribute name="scale-x" type="xs:decimal"/>
+  <xs:attribute name="scale-y" type="xs:decimal"/>
+  <xs:attribute name="border-left" type="xs:decimal"/>
+  <xs:attribute name="border-top" type="xs:decimal"/>
+  <xs:attribute name="border-right" type="xs:decimal"/>
+  <xs:attribute name="border-bottom" type="xs:decimal"/>
+  <xs:attribute name="alpha" type="xs:decimal"/>
+  <xs:attribute name="rotation" type="xs:decimal"/>
+  <xs:attribute name="rotation-3D" type="float3Type"/>
 </xs:attributeGroup>
 
 <xs:simpleType name="float2Type">
@@ -303,6 +313,17 @@
         <xs:enumeration value = "emissive"/>
         <xs:enumeration value = "background-emissive"/>
         <xs:enumeration value = "border-emissive"/>
+        <xs:enumeration value = "stretch"/>
+        <xs:enumeration value = "scale"/>
+        <xs:enumeration value = "scale-x"/>
+        <xs:enumeration value = "scale-y"/>
+        <xs:enumeration value = "border-left"/>
+        <xs:enumeration value = "border-top"/>
+        <xs:enumeration value = "border-right"/>
+        <xs:enumeration value = "border-bottom"/>
+        <xs:enumeration value = "alpha"/>
+        <xs:enumeration value = "rotation"/>
+        <xs:enumeration value = "rotation-3D"/>
       </xs:restriction>
     </xs:simpleType>
   </xs:attribute>
