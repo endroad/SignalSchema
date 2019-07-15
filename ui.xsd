@@ -164,6 +164,7 @@
   <xs:attribute name="border-thickness" type="xs:decimal" />
   <xs:attribute name="border-color" type="colorType" />
   <xs:attribute name="btn-key" type="keyType" />
+  <xs:attribute name="color-transfert" type="xs:decimal"/>
 </xs:attributeGroup>
 
 <xs:simpleType name="float2Type">
@@ -278,6 +279,7 @@
         <xs:enumeration value = "inner-radius"/>
         <xs:enumeration value = "min-angle"/>
         <xs:enumeration value = "max-angle"/>
+        <xs:enumeration value ="color-transfert"/>
       </xs:restriction>
     </xs:simpleType>
   </xs:attribute>

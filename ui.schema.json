@@ -140,7 +140,8 @@
                 "radius":             { "$ref": "#/definitions/transitionValue" },
                 "inner-radius":       { "$ref": "#/definitions/transitionValue" },
                 "min-angle":          { "$ref": "#/definitions/transitionValue" },
-                "max-angle":          { "$ref": "#/definitions/transitionValue" }
+                "max-angle":          { "$ref": "#/definitions/transitionValue" },
+                "color-transfert" :   { "$ref": "#/definitions/transitionValue" }
               },
               "additionalProperties": false
             },   
@@ -195,7 +196,8 @@
             "radius": { "type" :"number" },
             "inner-radius": { "type" :"number" },
             "min-angle": { "type" :"number" },
-            "max-angle": { "type" :"number" }
+            "max-angle": { "type" :"number" },
+            "color-transfert" : {"type":"number"}
         },
         "additionalProperties": false
       }                   
