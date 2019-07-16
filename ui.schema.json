@@ -415,6 +415,7 @@
               "additionalProperties" : false
             },                                 
 
+            "layout":                 { "$ref": "#/definitions/booleanOrVar"},
             "size" :                  { "$ref" : "#/definitions/vec2" },
             "width" :                 { "$ref" : "#/definitions/numberOrVar" },
             "height" :                { "$ref" : "#/definitions/numberOrVar" },
