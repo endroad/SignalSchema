@@ -269,6 +269,8 @@
   <xs:attribute name="property" use="required">
     <xs:simpleType>
       <xs:restriction base="xs:string">
+        <xs:enumeration value = "layout-pos"/>
+        <xs:enumeration value = "layout-size"/>
         <xs:enumeration value = "size"/>
         <xs:enumeration value = "width"/>
         <xs:enumeration value = "height"/>

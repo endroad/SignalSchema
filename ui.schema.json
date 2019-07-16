@@ -353,7 +353,9 @@
             {
               "type" : "object",
               "properties" :
-              {                
+              {         
+                "layout-pos":           { "$ref" : "#/definitions/transitionValue" },       
+                "layout-size":          { "$ref" : "#/definitions/transitionValue" },       
                 "color" :               { "$ref" : "#/definitions/transitionValue" },
                 "width" :               { "$ref" : "#/definitions/transitionValue" },
                 "height" :              { "$ref" : "#/definitions/transitionValue" },
