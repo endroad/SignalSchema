@@ -153,6 +153,14 @@
           { "type" : "string", "enum" : ["start", "center", "end", "baseline" ] }
         ]
       },
+      "layout" : 
+      {
+        "anyOf":
+        [
+          { "$ref" : "#/definitions/variable" },
+          { "type" : "string", "enum" : ["none", "child", "overlay"] }
+        ]
+      },
       "extent" :
       {        
         "anyOf" : 
@@ -415,7 +423,7 @@
               "additionalProperties" : false
             },                                 
 
-            "layout":                 { "$ref": "#/definitions/booleanOrVar"},
+            "layout":                 { "$ref": "#/definitions/layout"},
             "size" :                  { "$ref" : "#/definitions/vec2" },
             "width" :                 { "$ref" : "#/definitions/numberOrVar" },
             "height" :                { "$ref" : "#/definitions/numberOrVar" },
