@@ -341,6 +341,7 @@
     </xs:simpleType>
   </xs:attribute>
   <xs:attribute name="duration" type="xs:decimal" use="required"/>
+  <xs:attribute name="delay" type="xs:decimal"/>
   <xs:attribute name="interpolation">
     <xs:simpleType>
       <xs:restriction base="xs:string">

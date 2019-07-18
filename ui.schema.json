@@ -64,6 +64,7 @@
         "properties" : 
         {
           "duration" : { "type" : "number" },
+          "delay" : { "type" : "number" },
           "interpolation" : { "type" : "string", "enum" : ["linear","ease-in","ease-out","ease-in-out","custom"] },
           "curve" : { "type" : "string" },
           "scope" : { "type" : "string", "enum" : ["permanent", "state-only"] }
