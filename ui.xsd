@@ -111,6 +111,8 @@
 <xs:attributeGroup name="commonNodeAttrGrp">
   <xs:attribute name="class" type="xs:string"/>
   <xs:attribute name="id" type="xs:string"/>
+  <xs:attribute name="tag" type="xs:string"/>
+  <xs:attribute name="state" type="stateType"/>
   <xs:attribute name="width" type="xs:decimal"/>
   <xs:attribute name="height" type="xs:decimal"/>
   <xs:attribute name="layout">
@@ -355,4 +357,16 @@
   </xs:attribute>
   <xs:attribute name="curve" type="xs:string"/>
 </xs:complexType>
+
+<xs:simpleType name="stateType">
+  <xs:restriction base="xs:string">
+    <xs:enumeration value="hidden"/>
+    <xs:enumeration value="normal"/>
+    <xs:enumeration value="focus"/>
+    <xs:enumeration value="selected"/>
+    <xs:enumeration value="pressed"/>
+    <xs:enumeration value="disabled"/>
+  </xs:restriction>
+</xs:simpleType>
+
 </xs:schema>
