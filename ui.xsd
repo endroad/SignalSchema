@@ -131,8 +131,19 @@
 <xs:attributeGroup name="commonNodeAttrGrp">
   <xs:attribute name="class" type="xs:string"/>
   <xs:attribute name="id" type="xs:string"/>
+  <xs:attribute name="tag" type="xs:string"/>
+  <xs:attribute name="state" type="stateType"/>
   <xs:attribute name="width" type="xs:decimal"/>
   <xs:attribute name="height" type="xs:decimal"/>
+  <xs:attribute name="layout">
+    <xs:simpleType>
+      <xs:restriction base="xs:string">
+        <xs:enumeration value="none"/>
+        <xs:enumeration value="child"/>
+        <xs:enumeration value="overlay"/>
+      </xs:restriction>
+    </xs:simpleType>
+  </xs:attribute>
   <xs:attribute name="size" type="float2Type"/>
   <xs:attribute name="min-width" type="xs:decimal"/>
   <xs:attribute name="min-height" type="xs:decimal"/>
@@ -184,6 +195,7 @@
   <xs:attribute name="border" type="extentType" />
   <xs:attribute name="border-color" type="colorType" />
   <xs:attribute name="btn-key" type="keyType" />
+  <xs:attribute name="color-transfert" type="xs:decimal"/>
   <xs:attribute name="emissive" type="xs:decimal"/>
   <xs:attribute name="background-emissive" type="xs:decimal"/>
   <xs:attribute name="border-emissive" type="xs:decimal"/>
@@ -288,6 +300,8 @@
   <xs:attribute name="property" use="required">
     <xs:simpleType>
       <xs:restriction base="xs:string">
+        <xs:enumeration value = "layout-pos"/>
+        <xs:enumeration value = "layout-size"/>
         <xs:enumeration value = "size"/>
         <xs:enumeration value = "width"/>
         <xs:enumeration value = "height"/>
@@ -331,6 +345,7 @@
         <xs:enumeration value = "min-angle"/>
         <xs:enumeration value = "max-angle"/>
         <xs:enumeration value = "angle"/>
+        <xs:enumeration value ="color-transfert"/>
         <xs:enumeration value = "emissive"/>
         <xs:enumeration value = "background-emissive"/>
         <xs:enumeration value = "border-emissive"/>
@@ -349,6 +364,7 @@
     </xs:simpleType>
   </xs:attribute>
   <xs:attribute name="duration" type="xs:decimal" use="required"/>
+  <xs:attribute name="delay" type="xs:decimal"/>
   <xs:attribute name="interpolation">
     <xs:simpleType>
       <xs:restriction base="xs:string">
@@ -362,4 +378,16 @@
   </xs:attribute>
   <xs:attribute name="curve" type="xs:string"/>
 </xs:complexType>
+
+<xs:simpleType name="stateType">
+  <xs:restriction base="xs:string">
+    <xs:enumeration value="hidden"/>
+    <xs:enumeration value="normal"/>
+    <xs:enumeration value="focus"/>
+    <xs:enumeration value="selected"/>
+    <xs:enumeration value="pressed"/>
+    <xs:enumeration value="disabled"/>
+  </xs:restriction>
+</xs:simpleType>
+
 </xs:schema>

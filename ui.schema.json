@@ -64,6 +64,7 @@
         "properties" : 
         {
           "duration" : { "type" : "number" },
+          "delay" : { "type" : "number" },
           "interpolation" : { "type" : "string", "enum" : ["linear","ease-in","ease-out","ease-in-out","custom"] },
           "curve" : { "type" : "string" },
           "scope" : { "type" : "string", "enum" : ["permanent", "state-only"] }
@@ -151,6 +152,14 @@
         [
           { "$ref" : "#/definitions/variable" },
           { "type" : "string", "enum" : ["start", "center", "end", "baseline" ] }
+        ]
+      },
+      "layout" : 
+      {
+        "anyOf":
+        [
+          { "$ref" : "#/definitions/variable" },
+          { "type" : "string", "enum" : ["none", "child", "overlay"] }
         ]
       },
       "extent" :
@@ -354,7 +363,9 @@
             {
               "type" : "object",
               "properties" :
-              {
+              {         
+                "layout-pos":           { "$ref" : "#/definitions/transitionValue" },       
+                "layout-size":          { "$ref" : "#/definitions/transitionValue" },       
                 "color" :               { "$ref" : "#/definitions/transitionValue" },
                 "width" :               { "$ref" : "#/definitions/transitionValue" },
                 "height" :              { "$ref" : "#/definitions/transitionValue" },
@@ -409,11 +420,13 @@
                 "border-bottom":        { "$ref" : "#/definitions/transitionValue" },
                 "alpha":                { "$ref" : "#/definitions/transitionValue" },
                 "rotation":             { "$ref" : "#/definitions/transitionValue" },
-                "rotation-3D":          { "$ref" : "#/definitions/transitionValue" }
+                "rotation-3D":          { "$ref" : "#/definitions/transitionValue" },
+                "color-transfert" :     { "$ref": "#/definitions/transitionValue" }
               },
               "additionalProperties" : false
-            },   
-                   
+            },                                 
+
+            "layout":                 { "$ref": "#/definitions/layout"},
             "size" :                  { "$ref" : "#/definitions/vec2" },
             "width" :                 { "$ref" : "#/definitions/numberOrVar" },
             "height" :                { "$ref" : "#/definitions/numberOrVar" },
@@ -480,7 +493,8 @@
             "border-bottom":          { "$ref" : "#/definitions/numberOrVar" },
             "alpha":                  { "$ref" : "#/definitions/numberOrVar" },
             "rotation":               { "$ref" : "#/definitions/numberOrVar" },
-            "rotation-3D":            { "$ref" : "#/definitions/vec3" }
+            "rotation-3D":            { "$ref" : "#/definitions/vec3" },
+            "color-transfert" :       { "$ref" : "#/definitions/numberOrVar" }
         },
         "additionalProperties" : false
       }                   
