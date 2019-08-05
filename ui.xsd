@@ -208,6 +208,9 @@
   <xs:attribute name="alpha" type="xs:decimal"/>
   <xs:attribute name="rotation" type="xs:decimal"/>
   <xs:attribute name="rotation-3D" type="float3Type"/>
+  <xs:attribute name="offset-x" type="xs:decimal"/>
+  <xs:attribute name="offset-y" type="xs:decimal"/>
+  <xs:attribute name="offset" type="float2Type"/>
 </xs:attributeGroup>
 
 <xs:simpleType name="float2Type">
@@ -338,7 +341,10 @@
         <xs:enumeration value = "border-bottom"/>
         <xs:enumeration value = "alpha"/>
         <xs:enumeration value = "rotation"/>
-        <xs:enumeration value = "rotation-3D"/>
+        <xs:enumeration value = "color-transfert"/>
+        <xs:enumeration value = "offset-x"/>
+        <xs:enumeration value = "offset-y"/>
+        <xs:enumeration value = "offset"/>
       </xs:restriction>
     </xs:simpleType>
   </xs:attribute>
