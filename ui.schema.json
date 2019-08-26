@@ -505,6 +505,7 @@
             "offset-x" :              { "$ref" : "#/definitions/numberOrVar" },
             "offset-y" :              { "$ref" : "#/definitions/numberOrVar" },
             "offset":                 { "$ref" : "#/definitions/vec2" },
+            "nav":                    { "$ref" : "#/definitions/booleanOrVar" },
         },
         "additionalProperties" : false
       }                   
