@@ -338,7 +338,7 @@
                 "color-transfert":     { "$ref" : "#/definitions/animationValue" },              
                 "offset-x":            { "$ref" : "#/definitions/animationValue" },              
                 "offset-y":            { "$ref" : "#/definitions/animationValue" },              
-                "offset":              { "$ref" : "#/definitions/animationValue" },              
+                "offset":              { "$ref" : "#/definitions/animationValue" }       
               },
               "additionalProperties" : false
           }
@@ -428,7 +428,7 @@
                 "color-transfert" :     { "$ref": "#/definitions/transitionValue" },                
                 "offset-x":             { "$ref" : "#/definitions/transitionValue" },              
                 "offset-y":             { "$ref" : "#/definitions/transitionValue" },              
-                "offset":               { "$ref" : "#/definitions/transitionValue" },              
+                "offset":               { "$ref" : "#/definitions/transitionValue" }
               },
               "additionalProperties" : false
             },                                 
@@ -505,7 +505,7 @@
             "offset-x" :              { "$ref" : "#/definitions/numberOrVar" },
             "offset-y" :              { "$ref" : "#/definitions/numberOrVar" },
             "offset":                 { "$ref" : "#/definitions/vec2" },
-            "nav":                    { "$ref" : "#/definitions/booleanOrVar" },
+            "nav":                    { "$ref" : "#/definitions/booleanOrVar" }
         },
         "additionalProperties" : false
       }                   
