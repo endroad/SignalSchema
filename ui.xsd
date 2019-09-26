@@ -236,6 +236,7 @@
   <xs:attribute name="offset-y" type="xs:decimal"/>
   <xs:attribute name="offset" type="float2Type"/>
   <xs:attribute name="nav" type="xs:boolean"/>
+  <xs:attribute name="btn-mute" type="xs:boolean"/>
 </xs:attributeGroup>
 
 <xs:simpleType name="float2Type">
