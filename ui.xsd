@@ -6,6 +6,9 @@
 <xs:group name="nodeContentGroup">
   <xs:choice>
     <xs:element name ="transition" type="transitionType"/>
+    <xs:element name ="sfx" type="sfxType"/>
+    <xs:element name ="event" type="eventType"/>
+    <xs:element name ="evt" type="eventType"/>
     <xs:element name="node" type="nodeType"/>
     <xs:element name="text" type="textType"/>
     <xs:element name="txt" type="textType"/>
@@ -102,6 +105,7 @@
   <xs:attributeGroup ref="commonNodeAttrGrp"/>
   <xs:attribute name="content" type="xs:string" use="required"/>
   <xs:attribute name="key" type="keyType" use="required"/>
+  <xs:attribute name="btn-sfx" type="xs:string" use="optional"/>
 </xs:complexType>
 
 <xs:complexType name="circleType">
@@ -299,6 +303,22 @@
     <xs:enumeration value="space evenly"/>
   </xs:restriction>
 </xs:simpleType>
+
+<xs:complexType name="sfxType">
+    <xs:attribute name="name" type="xs:string"/>
+    <xs:attribute name="from-state" type="stateType"/>
+    <xs:attribute name="to-state" type="stateType"/>
+    <xs:attribute name="from-tag" type="xs:string"/>
+    <xs:attribute name="to-tag" type="xs:string"/>
+</xs:complexType>
+
+<xs:complexType name="eventType">
+    <xs:attribute name="name" type="xs:string"/>
+    <xs:attribute name="from-state" type="stateType"/>
+    <xs:attribute name="to-state" type="stateType"/>
+    <xs:attribute name="from-tag" type="xs:string"/>
+    <xs:attribute name="to-tag" type="xs:string"/>
+</xs:complexType>
 
 <xs:complexType name="transitionType">  
   <xs:attribute name="property" use="required">
