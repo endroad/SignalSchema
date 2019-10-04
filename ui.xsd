@@ -20,6 +20,7 @@
     <xs:element name="circ" type="circleType"/>
     <xs:element name="hexagon" type="hexagonType"/>
     <xs:element name="hex" type="hexagonType"/>
+    <xs:element name="line" type="lineType"/>
   </xs:choice>
 </xs:group>
 
@@ -130,6 +131,14 @@
   <xs:attribute name="radius" type="xs:decimal"/>
   <xs:attribute name="inner-radius" type="xs:decimal"/>
   <xs:attribute name="angle" type="xs:decimal"/>
+</xs:complexType>
+
+<xs:complexType name="lineType">
+  <xs:sequence minOccurs="0" maxOccurs="unbounded">      
+    <xs:group ref="nodeContentGroup"/>
+  </xs:sequence>
+  <xs:attributeGroup ref="commonNodeAttrGrp"/>
+  <xs:attribute name="thickness" type="xs:decimal"/>
 </xs:complexType>
 
 <xs:attributeGroup name="commonNodeAttrGrp">
